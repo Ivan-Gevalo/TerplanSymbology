@@ -1,12 +1,17 @@
-<?xml version="1.0" ?>
-<?xml-stylesheet type="text/xsl" href="plugins.xsl" ?>
+<?xml version="1.0"?>
 <plugins>
   <pyqgis_plugin name="Terplan Exporter" version="0.2b">
     <description>Модуль для экспорта векторных слоев из состава проектов документов территориального планирования в формат GML для последующего размещения на официальном сайте Федеральной государственной информационной системы территориального планирования</description>
+    <version>0.2b</version>
     <homepage>https://sites.google.com/view/terplan-symbology</homepage>
     <qgis_minimum_version>3.0</qgis_minimum_version>
     <file_name>tp_exporter.zip</file_name>
+    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/raw/main/QGIS%20Plugins/Terplan%20Exporter/tp_exporter.zip</download_url>
     <author_name>Ivan Gevalo</author_name>
-    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Terplan%20Exporter/tp_exporter.zip</download_url>
+    <experimental>False</experimental>
+    <deprecated>False</deprecated>
+    <tracker></tracker>
+    <repository>https://github.com/Ivan-Gevalo/TerplanSymbology</repository>
+    <tags>export</tags>
   </pyqgis_plugin>
 </plugins>
