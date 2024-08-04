@@ -6,7 +6,7 @@
     <homepage>https://sites.google.com/view/terplan-symbology</homepage>
     <qgis_minimum_version>3.0</qgis_minimum_version>
     <file_name>tp_exporter.zip</file_name>
-    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/raw/main/QGIS%20Plugins/Terplan%20Exporter/tp_exporter.zip</download_url>
+    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Terplan%20Exporter/tp_exporter.zip</download_url>
     <author_name>Ivan Gevalo</author_name>
     <experimental>False</experimental>
     <deprecated>False</deprecated>
