@@ -859,7 +859,7 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
                         <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
@@ -1144,9 +1144,9 @@
                         <xs:documentation>Наименование организации</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -1259,9 +1259,9 @@
                         <xs:documentation>Наименование организации</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -1484,9 +1484,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -1752,9 +1752,9 @@
                         <xs:documentation>Наименование организации</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -2152,7 +2152,7 @@
                 </xs:element>
                 <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -2608,9 +2608,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -2702,9 +2702,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -2782,9 +2782,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -2867,9 +2867,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3051,9 +3051,9 @@
                         <xs:documentation>наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3130,9 +3130,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3246,7 +3246,7 @@
                 </xs:element>
                 <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3448,9 +3448,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3533,9 +3533,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3619,9 +3619,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -3759,9 +3759,9 @@
                         <xs:documentation>Диспетчерский номер</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -4124,7 +4124,7 @@
                 </xs:element>
                 <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -4380,9 +4380,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -4619,9 +4619,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -4838,9 +4838,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5039,7 +5039,7 @@
                 </xs:element>
                 <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5226,9 +5226,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5425,9 +5425,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5515,9 +5515,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местопложение, адресное описание">
@@ -5585,9 +5585,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5671,9 +5671,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="ОКТМО" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5756,7 +5756,7 @@
         </xs:extension>
     </xs:complexContent>
 </xs:complexType>
-<xs:element name="EmergencyProtectionobj" type="fgistp:EmergencyProtectionObj_Type" substitutionGroup="gml:AbstractFeature" fgistp:username="Класс объектов «Объекты единой государственной системы предупреждения и ликвидации чрезвычайных ситуаций»">
+<xs:element name="EmergencyProtectionObj" type="fgistp:EmergencyProtectionObj_Type" substitutionGroup="gml:AbstractFeature" fgistp:username="Класс объектов «Объекты единой государственной системы предупреждения и ликвидации чрезвычайных ситуаций»">
     <xs:annotation>
         <xs:documentation>Класс объектов «Объекты единой государственной системы предупреждения и ликвидации чрезвычайных ситуаций»</xs:documentation>
     </xs:annotation>
@@ -5781,9 +5781,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5871,9 +5871,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -5956,9 +5956,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -6041,9 +6041,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -7159,9 +7159,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
@@ -7258,9 +7258,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположене, адресное описание">
@@ -8361,9 +8361,9 @@
                         <xs:documentation>Наименование объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код OKTMO">
+                <xs:element name="OKTMO" type="fgistp:OKTMO" fgistp:username="Код ОКТМО">
                     <xs:annotation>
-                        <xs:documentation>Код OKTMO</xs:documentation>
+                        <xs:documentation>Код ОКТМО</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="ADDRESS" type="xs:string" minOccurs="0" fgistp:username="Местоположение, адресное описание">
