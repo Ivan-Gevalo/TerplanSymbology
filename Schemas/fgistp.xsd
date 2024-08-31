@@ -589,7 +589,7 @@
                         <xs:documentation>Местоположение, адресное описание</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="AF_ТYРЕ" type="fgistp:AF_TYPE" minOccurs="0" fgistp:username="Подтип спортивного сооружения">
+                <xs:element name="AF_TYPE" type="fgistp:AF_TYPE" minOccurs="0" fgistp:username="Подтип спортивного сооружения">
                     <xs:annotation>
                         <xs:documentation>Подтип спортивного сооружения</xs:documentation>
                     </xs:annotation>
@@ -2341,7 +2341,7 @@
                         <xs:documentation>Период функционирования дороги</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="RDWIN_TYРЕ" type="fgistp:RDWIN_TYPE" minOccurs="0" fgistp:username="Тип зимней автомобильной дороги (автозимника)">
+                <xs:element name="RDWIN_TYPE" type="fgistp:RDWIN_TYPE" minOccurs="0" fgistp:username="Тип зимней автомобильной дороги (автозимника)">
                     <xs:annotation>
                         <xs:documentation>Тип зимней автомобильной дороги (автозимника)</xs:documentation>
                     </xs:annotation>
@@ -2455,7 +2455,7 @@
                         <xs:documentation>Тип магистральных городских дорог</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="STR_O_TYРЕ" type="fgistp:STR_O_TYPE" minOccurs="0" fgistp:username="Тип магистральных улиц общегородского значения">
+                <xs:element name="STR_O_TYPE" type="fgistp:STR_O_TYPE" minOccurs="0" fgistp:username="Тип магистральных улиц общегородского значения">
                     <xs:annotation>
                         <xs:documentation>Тип магистральных улиц общегородского значения</xs:documentation>
                     </xs:annotation>
@@ -3165,7 +3165,7 @@
                         <xs:documentation>Класс взлетно-посадочной полосы</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="СОМРL_NAME" type="xs:string" minOccurs="0" fgistp:username="Наименование комплексного объекта">
+                <xs:element name="COMPL_NAME" type="xs:string" minOccurs="0" fgistp:username="Наименование комплексного объекта">
                     <xs:annotation>
                         <xs:documentation>Наименование комплексного объекта</xs:documentation>
                     </xs:annotation>
@@ -3908,7 +3908,7 @@
                         <xs:documentation>Тип тока</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="PL_TYРЕ" type="fgistp:PL_TYPE" fgistp:username="Вид линии электропередач">
+                <xs:element name="PL_TYPE" type="fgistp:PL_TYPE" fgistp:username="Вид линии электропередач">
                     <xs:annotation>
                         <xs:documentation>Вид линии электропередач</xs:documentation>
                     </xs:annotation>
@@ -5187,7 +5187,7 @@
                         <xs:documentation>Источник данных</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="NОТЕ" type="xs:string" minOccurs="0" fgistp:username="Примечание">
+                <xs:element name="NOTE" type="xs:string" minOccurs="0" fgistp:username="Примечание">
                     <xs:annotation>
                         <xs:documentation>Примечание</xs:documentation>
                     </xs:annotation>
