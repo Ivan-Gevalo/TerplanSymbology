@@ -3594,7 +3594,7 @@
         </xs:extension>
     </xs:complexContent>
 </xs:complexType>
-<xs:element name="Transport0bj" type="fgistp:TransportObj_Type" substitutionGroup="gml:AbstractFeature" fgistp:username="Класс объектов «Искусственные дорожные сооружения»">
+<xs:element name="TransportObj" type="fgistp:TransportObj_Type" substitutionGroup="gml:AbstractFeature" fgistp:username="Класс объектов «Искусственные дорожные сооружения»">
     <xs:annotation>
         <xs:documentation>Класс объектов «Искусственные дорожные сооружения»</xs:documentation>
     </xs:annotation>
