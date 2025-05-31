@@ -6312,7 +6312,8 @@
     <xs:complexType name="EngSanitaryGapZone_Type">
         <xs:complexContent>
             <xs:extension base="gml:AbstractFeatureType">
-                <xs:sequence> <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
+                <xs:sequence>
+                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
                         </xs:annotation>
@@ -6718,7 +6719,8 @@
     </xs:element>
     <xs:complexType name="HeritageProtectionZone_Type">
         <xs:complexContent>
-            <xs:extension base="gml:AbstractFeatureType"> <xs:sequence>
+            <xs:extension base="gml:AbstractFeatureType">
+                <xs:sequence>
                     <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
@@ -6881,7 +6883,8 @@
     <xs:complexType name="Foreshore_Type">
         <xs:complexContent>
             <xs:extension base="gml:AbstractFeatureType">
-                <xs:sequence> <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
+                <xs:sequence>
+                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
                         </xs:annotation>
@@ -7168,7 +7171,8 @@
         </xs:annotation>
     </xs:element>
     <xs:complexType name="Heritage_Type">
-        <xs:complexContent> <xs:extension base="gml:AbstractFeatureType">
+        <xs:complexContent>
+            <xs:extension base="gml:AbstractFeatureType">
                 <xs:sequence>
                     <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
@@ -7345,8 +7349,7 @@
         <xs:complexContent>
             <xs:extension base="gml:AbstractFeatureType">
                 <xs:sequence>
-                    <xs:element name="GLOBALID" type="fgistp:UUID"
-                        fgistp:username="Идентификатор объекта">
+                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
                         </xs:annotation>
@@ -7454,7 +7457,8 @@
         </xs:annotation>
     </xs:element>
     <xs:complexType name="NaturalRiskZone_Type">
-        <xs:complexContent> <xs:extension base="gml:AbstractFeatureType">
+        <xs:complexContent>
+            <xs:extension base="gml:AbstractFeatureType">
                 <xs:sequence>
                     <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
@@ -7670,7 +7674,7 @@
         <xs:complexContent>
             <xs:extension base="gml:AbstractFeatureType">
                 <xs:sequence>
-                    <xs:element name="GLOBALID" type="fgistp:UUID" minOccurs="0" fgistp:username="Идентификатор объекта">
+                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
                         </xs:annotation>
@@ -7742,7 +7746,8 @@
         <xs:complexContent>
             <xs:extension base="gml:AbstractFeatureType">
                 <xs:sequence>
-                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта"> <xs:annotation>
+                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
+                        <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
                         </xs:annotation>
                     </xs:element>
@@ -7804,7 +7809,7 @@
         <xs:complexContent>
             <xs:extension base="gml:AbstractFeatureType">
                 <xs:sequence>
-                    <xs:element name="GLOBALID" type="fgistp:UUID" minOccurs="0" fgistp:username="Идентификатор объекта">
+                    <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                         <xs:annotation>
                             <xs:documentation>Идентификатор объекта</xs:documentation>
                         </xs:annotation>

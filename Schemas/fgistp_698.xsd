@@ -93,7 +93,7 @@
             <xs:sequence>
                 <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
                     <xs:annotation>
-                        <xs:documentation>“Идентификатор объекта</xs:documentation>
+                        <xs:documentation>Идентификатор объекта</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="CLASSID" type="fgistp:AdmeRF_CLASSID" fgistp:username="Код объекта">
@@ -132,39 +132,39 @@
     <xs:complexContent>
         <xs:extension base="gml:AbstractFeatureType">
             <xs:sequence>
-            <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
-                <xs:annotation>
-                    <xs:documentation>Идентификатор объекта</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="CLASSID" type="fgistp:AdmeSRF_CLASSID" fgistp:username="Код объекта">
-                <xs:annotation>
-                    <xs:documentation>Код объекта</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="NAME" type="xs:string" fgistp:username="Наименование объекта">
-                <xs:annotation>
-                    <xs:documentation>Наименование объекта</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="TYPE_SUBJ" type="fgistp:TYPE_SUBJ" fgistp:username="Тип субъекта Российской Федерации">
-                <xs:annotation>
-                    <xs:documentation>Тип субъекта Российской Федерации</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="POPULATION" type="xs:double" minOccurs="0" fgistp:username="Численность населения, тыс. чел.">
-                <xs:annotation>
-                    <xs:documentation>Численность населения, тыс. чел.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="SOURCE" type="xs:string" minOccurs="0" fgistp:username="Источник данных">
-                <xs:annotation>
-                    <xs:documentation>Источник данных</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:choice>
-                <xs:element ref="gml:MultiSurface"/>
-            </xs:choice>
+                <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
+                    <xs:annotation>
+                        <xs:documentation>Идентификатор объекта</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="CLASSID" type="fgistp:AdmeSRF_CLASSID" fgistp:username="Код объекта">
+                    <xs:annotation>
+                        <xs:documentation>Код объекта</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="NAME" type="xs:string" fgistp:username="Наименование объекта">
+                    <xs:annotation>
+                        <xs:documentation>Наименование объекта</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="TYPE_SUBJ" type="fgistp:TYPE_SUBJ" fgistp:username="Тип субъекта Российской Федерации">
+                    <xs:annotation>
+                        <xs:documentation>Тип субъекта Российской Федерации</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="POPULATION" type="xs:double" minOccurs="0" fgistp:username="Численность населения, тыс. чел.">
+                    <xs:annotation>
+                        <xs:documentation>Численность населения, тыс. чел.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="SOURCE" type="xs:string" minOccurs="0" fgistp:username="Источник данных">
+                    <xs:annotation>
+                        <xs:documentation>Источник данных</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:choice>
+                    <xs:element ref="gml:MultiSurface"/>
+                </xs:choice>
             </xs:sequence>
         </xs:extension>
     </xs:complexContent>
@@ -6273,9 +6273,9 @@
         <xs:extension base="gml:AbstractFeatureType">
             <xs:sequence>
                 <xs:element name="GLOBALID" type="fgistp:UUID" fgistp:username="Идентификатор объекта">
-                <xs:annotation>
-                    <xs:documentation>Идентификатор объекта</xs:documentation>
-                </xs:annotation>
+                    <xs:annotation>
+                        <xs:documentation>Идентификатор объекта</xs:documentation>
+                    </xs:annotation>
                 </xs:element>
                 <xs:element name="CLASSID" type="fgistp:EngSanitaryGapZone_CLASSID"/>
                 <xs:element name="ZONE_DESC" type="xs:string" minOccurs="0" fgistp:username="Описание санитарного разрыва">
