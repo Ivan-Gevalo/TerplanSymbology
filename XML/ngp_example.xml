@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gml:FeatureCollection
+    xmlns="http://fgistp"
+    xmlns:gml="http://www.opengis.net/gml/3.2" gml:id="i000001">
+    <!-- Расчетные показатели, устанавливаемые для объектов регионального значения в области транспорта (автомобильный, водный, воздушный), автомобильных дорог регионального и межмуниципального значения -->
+    <!-- Автовокзалы -->
+    <gml:featureMemeber>
+        <PublicTransportObj>
+            <GLOBALID>09c13038-e13c-48e3-a1f0-d2d6a6c800ca</GLOBALID>
+            <CLASSID>602030701</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <TRAOB_TYPE>1</TRAOB_TYPE>
+            <TRAOB_OBES>1</TRAOB_OBES>
+            <TR_DOS>110</TR_DOS>
+        </PublicTransportObj>
+    </gml:featureMemeber>
+
+    <!-- Автостанции -->
+    <gml:featureMemeber>
+        <PublicTransportObj>
+            <GLOBALID>00590587-5113-494a-9e21-429f5082f9a7</GLOBALID>
+            <CLASSID>602030702</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <TRAOB_TYPE>1</TRAOB_TYPE>
+            <TRAOB_OBES>1</TRAOB_OBES>
+            <TR_DOS>110</TR_DOS>
+        </PublicTransportObj>
+    </gml:featureMemeber>
+
+    <!-- Автомобильные дороги регионального и межмуниципального сообщения -->
+    <gml:featureMemeber>
+        <Road>
+            <CLASSID>602030302</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <AROBJ_TYPE>1</AROBJ_TYPE>
+            <PLROAD>60</PLROAD>
+        </Road>
+    </gml:featureMemeber>
+
+    <!-- Транспортно-пересадочный узел -->
+    <!-- В XML-схеме не предусмотрен элемент для описания соответствующего класса объектов -->
+
+    <!-- Расчетные показатели, устанавливаемые для объектов предупреждения чрезвычайных ситуаций межмуниципального и регионального характера, стихийных бедствий и ликвидации их последствий -->
+    <!-- Пожарные части -->
+    <gml:featureMemeber>
+        <EmergencyProtectionObj>
+            <CLASSID>602050202</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <MCS_TYPE>1</MCS_TYPE>
+            <TR_DOS>20</TR_DOS>
+        </EmergencyProtectionObj>
+    </gml:featureMemeber>
+
+    <!-- Расчетные показатели, устанавливаемые для объектов гражданской обороны -->
+    <!-- Убежища -->
+    <gml:featureMemeber>
+        <EmergencyProtectionObj>
+            <CLASSID>602050208</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <MXDOS>1000</MXDOS>
+        </EmergencyProtectionObj>
+    </gml:featureMemeber>
+
+    <!-- Расчетные показатели в области здравоохранения -->
+    <!-- Врачебная амбулатория -->
+    <gml:featureMemeber>
+        <Health>
+            <CLASSID>602010402</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <HEA_TYPE>3</HEA_TYPE>
+            <HEAGOR_OBES>1</HEAGOR_OBES>
+            <MXDOS>60</MXDOS>
+        </Health>
+    </gml:featureMemeber>
+
+    <!-- Поликлиника -->
+    <gml:featureMemeber>
+        <Health>
+            <CLASSID>602010401</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <HEA_TYPE>3</HEA_TYPE>
+            <NEOT_OBES>1</NEOT_OBES>
+            <MXDOS>60</MXDOS>
+            <TR_DOS>20</TR_DOS>
+        </Health>
+    </gml:featureMemeber>
+
+    <!-- Участковая больница -->
+    <gml:featureMemeber>
+        <Health>
+            <CLASSID>602010401</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <HEA_TYPE>2</HEA_TYPE>
+            <MXDOS>110</MXDOS>
+            <TR_DOS>90</TR_DOS>
+        </Health>
+    </gml:featureMemeber>
+
+    <!-- Специализированные медицинские организации (диспансеры) -->
+    <gml:featureMemeber>
+        <Health>
+            <CLASSID>602010403</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <HEA_TYPE>4</HEA_TYPE>
+            <HEASB_OBES>1</HEASB_OBES>
+        </Health>
+    </gml:featureMemeber>
+
+    <!-- Расчетные показатели в области физической культуры и массового спорта -->
+    <!-- Стадионы с трибунами на 1500 мест и более -->
+    <gml:featureMemeber>
+        <Sport>
+            <CLASSID>602010302</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <SP_TYPE>2</SP_TYPE>
+            <SP_OBES>1</SP_OBES>
+            <TR_DOS>110</TR_DOS>
+        </Sport>
+    </gml:featureMemeber>
+
+    <!-- Крытые плавательные бассейны -->
+    <gml:featureMemeber>
+        <Sport>
+            <CLASSID>602010301</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <SP_TYPE>1</SP_TYPE>
+            <SP_OBES>5</SP_OBES>
+            <TR_DOS>110</TR_DOS>
+        </Sport>
+    </gml:featureMemeber>
+
+    <!-- Расчетные показатели в области культуры и искусства -->
+    <!-- Библиотека, ее филиал -->
+    <gml:featureMemeber>
+        <Culture>
+            <CLASSID>602010201</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <CUL_TYPE>1</CUL_TYPE>
+            <CULSB_OBES>5</CULSB_OBES>
+            <TR_DOS>60</TR_DOS>
+        </Culture>
+    </gml:featureMemeber>
+
+    <!-- Музей, музей-филиал, территориально обособленный отдел музея -->
+    <gml:featureMemeber>
+        <Culture>
+            <CLASSID>602010201</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <CUL_TYPE>2</CUL_TYPE>
+            <TR_DOS>60</TR_DOS>
+        </Culture>
+    </gml:featureMemeber>
+
+    <!-- Расчетные показатели в области социального обслуживания -->
+    <!-- Дом-интернат (пансионат) для престарелых и инвалидов -->
+    <gml:featureMemeber>
+        <Social>
+            <CLASSID>602010501</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <SOC_TYPE>3</SOC_TYPE>
+            <SOC_OBES>30</SOC_OBES>
+        </Social>
+    </gml:featureMemeber>
+
+    <!-- Расчетные показатели в области отдыха и туризма -->
+    <!-- Гостиницы -->
+    <gml:featureMemeber>
+        <Recreation>
+            <CLASSID>602010601</CLASSID>
+            <OKTMO>65000000</OKTMO>
+            <OTUR_TYPE>3</OTUR_TYPE>
+            <KEMPVT_OBES>1</KEMPVT_OBES>
+        </Recreation>
+    </gml:featureMemeber>
+</gml:FeatureCollection>
