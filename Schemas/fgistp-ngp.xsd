@@ -1,0 +1,3024 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+    Приведенная схема является модификацией XML-схемы, являющейся приложением к приказу Министерства экономического развития Российской Федерации от 13.02.2025 № 89 и используемой для подготовки электронных XML-документов, воспроизводящих сведения из основной части нормативов градостроительного проектирования, впоследствии размещаемых на официальном сайте Федеральной государственной информацинной системы территориального планирования (ФГИС ТП).
+	
+	Файл оригинальной схемы размещен на сайте ФГИС ТП: https://fgistp.economy.gov.ru/xsd/fgistp-ngp_4.xsd
+
+    В данной модификации внесены следующие изменения:
+    - из описания составных типов удален элемент ZNP_TYPE; в оригинальной схеме для данного элемента указан одноименный тип, однако определение данного типа в XML-схеме отсутствует;
+    - удалены неиспользуемые справочники;
+    - описания кодов справочников перенесены из атрибута fgistp:username в аннотации;
+	- удалены атрибуты fgistp:username, поскольку значения данных атрибутов дублируются в аннотациях.
+
+    Файл модифицированной схемы размещен на сайте Terplan Symbology по ссылке https://sites.google.com/view/terplan-symbology/fgistp
+-->
+
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+	xmlns:gml="http://www.opengis.net/gml/3.2"
+	xmlns:fgistp="http://fgistp"
+	targetNamespace="http://fgistp"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:import
+		namespace="http://www.opengis.net/gml/3.2"
+		schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+
+	<!-- Описание простых типов -->
+	<xs:simpleType name="UUID">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(urn:uuid:)?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OKTMO">
+		<xs:annotation>
+			<xs:documentation>Код из Общероссийского классификатора территорий муниципальных образований</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="8"/>
+			<xs:maxLength value="11"/>
+			<xs:pattern value="[0-9]{8}"/>
+			<xs:pattern value="[0-9]{11}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Описание составных типов -->
+	<xs:complexType name="Education_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Education_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+						<xs:element name="EDU_TYPE" type="fgistp:EDU_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+						<xs:element name="EYR_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности местами на 100 человек, окончивших обучение по программам основного общего и среднего общего образования</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ASLI_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, число мест на 100 детей в возрасте от 0 до 7 лет</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ASLIT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, мест для детей в возрасте 0-7 лет на 1000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SCOL_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, число мест на 100 детей в возрасте от 7 до 18 лет</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SCOLI_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, число мест на 100 детей в возрасте от 5 до 18 лет</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PSI_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, центр на 5 тыс. детского населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="INTNT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, 1 на 10 тыс. детского населения, но не менее 1 в субъекте РФ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="EUR_OBJ" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, мест в образовательной организации для учащихся очной формы</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, (минуты)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Education" type="fgistp:Education_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты образования и науки»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Culture_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Culture_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CUL_TYPE" type="fgistp:CUL_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения региональными и межмуниципальными библиотеками, количество объектов на 10 000 чел.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULSB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, количество библиотек каждого вида на субъект РФ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULONE_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения музеями, количество на 1 млн. чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULf_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения музеями, количество на 500 тыс. - 1 млн. чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULGOR_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения музеями, количество на 150 тыс.- 500 тыс. чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULONET_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения театрами, количество на 1 млн. чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULfT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения театрами, количество на 500 тыс. - 1 млн. чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULGORT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения театрами, количество на 150 тыс.-500 тыс. чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULGORK_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения концертными залами, количество от 500 тыс. чел.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULONETK_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения концертными залами, количество до 500 тыс. чел.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULfTC_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения цирковыми аттракционами/площадками, количество от 1 млн. чел.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULDK_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения дворцами культуры</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULGORZO_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, на 500 тыс. населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CULONZUU_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, на 250 тыс. населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUGDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Culture" type="fgistp:Culture_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты культуры и искусства»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Sport_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Sport_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SP_TYPE" type="fgistp:SP_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="SP_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, единиц на 100 000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SPM_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, м2 на 10000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, (минуты)</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUGDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Sport" type="fgistp:Sport_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты физкультурного и спортивного назначения»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Health_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Health_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="HEA_TYPE" type="fgistp:HEA_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="HEA_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, единиц на 50000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NEOT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, единиц на 20000–50000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AMB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, посещений на 1000 жителей/детей/взрослых</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="HEASB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объектов на субъект РФ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="HEAONE_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, численность населения, тыс. чел на 1 объект</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="HEADET_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, мест на детей 3 - 18 лет на 1000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="HEAGOR_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, единиц на муниципальное образование, крупный, крупнейший город</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Health" type="fgistp:Health_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты здравоохранения»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Social_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Social_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SOC_TYPE" type="fgistp:SOC_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="SOC_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, мест на 10 тыс. взрослого населения (младше 18 лет)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SOCSB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объект на 1000 детей и подростков с ограниченными возможностями (лиц до достижения возраста 18 лет)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SOCONE_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объект на 50 тыс. населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Social" type="fgistp:Social_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты социального обслуживания»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="WasteFacility_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:WasteFacility_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OTHOBJ_TYPE" type="fgistp:OTHOBJ_TYPE">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PLOTHO" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения услугами по сбору ТКО, твердые – кг/жидкие - литров в месяц на 1 жителя</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUGDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="WasteFacility" type="fgistp:WasteFacility_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты утилизации, обезвреживания, размещения отходов производства и потребления»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Road_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Road_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AROBJ_TYPE" type="fgistp:AROBJ_TYPE">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PLROAD" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Плотность автодорог регионального, межмуниципального и местного значения, км/кв. км площади региона/муниципального образования</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PLYLROAD" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Протяженность жилых улиц относительно плотности населения, км/1 000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="VELDROAD" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Плотность сети велодорожек, км/1 кв. км площади населенных пунктов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PARKINGROAD" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество машиноместа в пределах населенного пункта, планировочной единицы населенного пункта, ед. на 1 000 личных автомобилей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AZSGROAD" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество точек раздачи автомобильного топлива, ед. на 1 000 автомобилей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUGDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Road" type="fgistp:Road_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+				<xs:documentation>Класс объектов «Автомобильный дороги»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="PublicTransportObj_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="GLOBALID" type="fgistp:UUID">
+						<xs:annotation>
+							<xs:documentation>Идентификатор объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CLASSID" type="fgistp:PublicTransportObj_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TRAOB_TYPE" type="fgistp:TRAOB_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="TRAOB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объектов на МО, средний, крупный, крупнейший город</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PublicTransportObj" type="fgistp:PublicTransportObj_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты автомобильного пассажирского транспорта»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="ElectricPowerStation_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:ElectricPowerStation_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ELEC_TYPE" type="fgistp:ELEC_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="ELEC_UD_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Удельная расчетная электрическая нагрузка электроприемников квартир жилых зданий (коттеджей), кВт на квартиру</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ELEC_OBJ" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Электропотребление, кВт·ч/год на 1 чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ElectricPowerStation" type="fgistp:ElectricPowerStation_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Электроснабжения»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="EmergencyProtectionObj_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:EmergencyProtectionObj_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MCS_TYPE" type="fgistp:MCS_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FE_COUNT" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество депо/кол-во автомобилей на муниципальное образование</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="YR_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объект на муниципальное образование с численностью населения 10000 населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UR_OBJ" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество объектов на 10000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DEPO_OBJ" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество депо/кол-во автомобилей на муниципальное образование</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmergencyProtectionObj" type="fgistp:EmergencyProtectionObj_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты единой государственной системы предупреждения и ликвидации чрезвычайных ситуаций»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="GasFacility_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:GasFacility_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GAS_TYPE" type="fgistp:GAS_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GAS_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Усредненный показатель расхода природного газа, куб. м/год на 1 чел.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUGDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="GasFacility" type="fgistp:GasFacility_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты добычи и транспортировки газа»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="ThermalFacility_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:ThermalFacility_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TVV_TYPE" type="fgistp:TVV_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="TEPL_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Усредненный показатель удельного теплопотребления, ккал/час на 1 кв. м общей площади.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="VODOP_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Усредненный показатель удельного водопотребления, л/чел. в сутки</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="VODOOTV_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Усредненный показатель удельного водоотведения, л/чел. в сутки</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ThermalFacility" type="fgistp:ThermalFacility_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты тепло- и водоснабжение населения, водоотведение»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Public_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Public_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OBZ_TYPE" type="fgistp:OBZ_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="PARK_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения озелененными территориями общего пользования (всех видов), кв. м на жителя</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LESP_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения озелененными рекреационными территориями, % от площади населенных пунктов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NABP_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения объектами благоустройства прибрежной зоны, %% от протяженности береговой линии</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OBPR_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения общественными пространствами, кв. м на жителя</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="PLVIG_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения площадками выгула для собак, ед. на 1000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="WCOB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения туалетами в общественных пространствах, ед. на 1000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DPESH_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения пешеходными дорожками вне улично-дорожной сети, км/га застроенной территории</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Public" type="fgistp:Public_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Общественные пространства, объекты благоустройства и озеленения»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Recreation_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Recreation_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OTUR_TYPE" type="fgistp:OTUR_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="PRRECZ_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения объектами в местах массового отдыха, кв. м на чел</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ORGOTD_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, мест на 1000 резидентов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KEMPVT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OBINFTYRB_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объект более на 50 тыс. населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OBINFTYRM_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объект менее на 50 тыс. населения</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Recreation" type="fgistp:Recreation_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты отдыха и туризма»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Cemetery_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Cemetery_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CEM_TYPE" type="fgistp:CEM_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="CEMY_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения местами захоронения умерших, га на 1000 умерших</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га на 1000 человек</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Cemetery" type="fgistp:Cemetery_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Места погребения»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="Agriculture_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:Agriculture_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PRSH_TYPE" type="fgistp:PRSH_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="AGRMO_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объектов единиц на муниципальное образование</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AGRSP_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объектов на 1000 жителей сельских н/п</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SMP_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности СМП производственными площадками, га/100 СМП</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SMPOF_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности СМП офисными, торговыми и иными непроизводственными помещениями, кв. м помещений/100 СМП</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га на 1000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Agriculture" type="fgistp:Agriculture_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Предприятия и объекты сельского и лесного хозяйства, рыболовства и рыбоводства»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="TelecomFacility_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:TelecomFacility_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OBSV_TYPE" type="fgistp:OBSV_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="OBPIT_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения предприятиями общественного питания, кв. м/1000 резидентов</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CAF_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения предприятиями общественного питания, место на 1000 человек</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POCH_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности объектами почтовой связи, объект на 100000</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SOTF_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, объектов на 1 нас. пункт</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUGDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, га</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TelecomFacility" type="fgistp:TelecomFacility_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Объекты связи, общественного питания, торговли и бытового обслуживания»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:complexType name="OtherObject_Type">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="CLASSID" type="fgistp:OtherObject_CLASSID">
+						<xs:annotation>
+							<xs:documentation>Код объекта</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OKTMO" type="fgistp:OKTMO">
+						<xs:annotation>
+							<xs:documentation>Код ОКТМО</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OTHOB_TYPE" type="fgistp:OTHOB_TYPE" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Перечень возможных объектов</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element name="MFC_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Обеспеченность населения центрами предоставления государственных и муниципальных услуг, объектов/10000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PRZIV_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченность населения приютами для животных, объектов/10000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MVD_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения объектами охраны порядка, объектов/10000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ZAGS_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности населения объектами ЗАГС, объектов/10000 жителей</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="MOLC_OBES" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уровень обеспеченности, единиц на муниципальное образование</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MXDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Максимальная доступность, пешеходная доступность, метры, минуты</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element name="TR_DOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортная доступность, мин.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RZUDOS" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Размер земельного участка, кв. м на 1 место</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONF" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(Факт)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="POPULATIONP" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Численность населения, тыс. чел.(План)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="OtherObject" type="fgistp:OtherObject_Type" substitutionGroup="gml:AbstractFeature">
+		<xs:annotation>
+			<xs:documentation>Класс объектов «Иные объекты федерального значения, объекты регионального значения, объекты местного значения»</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<!-- Справочники, используемые для заполнения отдельных элементов -->
+	<xs:simpleType name="Education_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты образования и науки»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010101">
+				<xs:annotation>
+					<xs:documentation>Дошкольная образовательная организация</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010102">
+				<xs:annotation>
+					<xs:documentation>Общеобразовательная организация</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010103">
+				<xs:annotation>
+					<xs:documentation>Организация дополнительного образования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010104">
+				<xs:annotation>
+					<xs:documentation>Организация, реализующая программы профессионального и высшего образования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010105">
+				<xs:annotation>
+					<xs:documentation>Специальное учебно-воспитательное учреждение для обучающихся с ограниченными возможностями здоровья</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010106">
+				<xs:annotation>
+					<xs:documentation>Организация, осуществляющая обучение</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010107">
+				<xs:annotation>
+					<xs:documentation>Научные центры мирового уровня</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010108">
+				<xs:annotation>
+					<xs:documentation>Научно-образовательный центр мирового уровня</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010109">
+				<xs:annotation>
+					<xs:documentation>Математический центр мирового уровня</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010110">
+				<xs:annotation>
+					<xs:documentation>Центр геномных исследований мирового уровня</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010111">
+				<xs:annotation>
+					<xs:documentation>Научная установка «мегасайенс»</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010112">
+				<xs:annotation>
+					<xs:documentation>Национальные сетевые биоресурсы</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Culture_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты культуры и искусства»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010201">
+				<xs:annotation>
+					<xs:documentation>Объект культурно-просветительного назначения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010202">
+				<xs:annotation>
+					<xs:documentation>Объект культурно-досугового (клубного) типа</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010203">
+				<xs:annotation>
+					<xs:documentation>Зрелищная организация</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Sport_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты физкультурного и спортивного назначения»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010301">
+				<xs:annotation>
+					<xs:documentation>Объект спорта, включающий раздельно нормируемые спортивные сооружения (объекты) (в т. ч. физкультурно-оздоровительный комплекс)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010302">
+				<xs:annotation>
+					<xs:documentation>Спортивное сооружение</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Health_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты здравоохранения»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010401">
+				<xs:annotation>
+					<xs:documentation>Лечебно-профилактическая медицинская организация (кроме санаторно-курортной), оказывающая медицинскую помощь в стационарных условиях, ее структурное подразделение</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010402">
+				<xs:annotation>
+					<xs:documentation>Лечебно-профилактическая медицинская организация, оказывающая медицинскую помощь в амбулаторных условиях и (или) в условиях дневного стационара</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010403">
+				<xs:annotation>
+					<xs:documentation>Медицинская организация особого типа</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010404">
+				<xs:annotation>
+					<xs:documentation>Медицинская организация по надзору в сфере защиты прав потребителей и благополучия человека</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010405">
+				<xs:annotation>
+					<xs:documentation>Клиники научных и научно-исследовательских организаций, организаций профессионального образования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010406">
+				<xs:annotation>
+					<xs:documentation>Обособленное структурное подразделение медицинской организации, оказывающей первичную медико-санитарную помощь</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010407">
+				<xs:annotation>
+					<xs:documentation>Медицинская организация, оказывающая скорую медицинскую помощь, ее структурное подразделение</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010408">
+				<xs:annotation>
+					<xs:documentation>Аптечная организация</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Social_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты социального обслуживания»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010501">
+				<xs:annotation>
+					<xs:documentation>Стационарные организации социального обслуживания</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010502">
+				<xs:annotation>
+					<xs:documentation>Комплексные, полустационарные и нестационарные организации социального обслуживания</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010503">
+				<xs:annotation>
+					<xs:documentation>Организации (отделения) социального обслуживания на дому</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010504">
+				<xs:annotation>
+					<xs:documentation>Организации (отделения) срочного социального обслуживания, срочной социально-консультационной помощи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010506">
+				<xs:annotation>
+					<xs:documentation>Объекты молодежной политики</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Recreation_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты отдыха и туризма»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010601">
+				<xs:annotation>
+					<xs:documentation>Гостиницы и аналогичные коллективные средства размещения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010602">
+				<xs:annotation>
+					<xs:documentation>Специализированные коллективные средства размещения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010603">
+				<xs:annotation>
+					<xs:documentation>Детский оздоровительный лагерь</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010604">
+				<xs:annotation>
+					<xs:documentation>Оздоровительно-спортивный лагерь</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010605">
+				<xs:annotation>
+					<xs:documentation>Объекты физкультурно-досугового назначения и активного отдыха</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010607">
+				<xs:annotation>
+					<xs:documentation>Места и объекты массового посещения в том числе тематический туризм</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Public_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Общественные пространства»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602010901">
+				<xs:annotation>
+					<xs:documentation>Тематический парк</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010902">
+				<xs:annotation>
+					<xs:documentation>Парк культуры и отдыха</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010903">
+				<xs:annotation>
+					<xs:documentation>Пешеходная зона</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010904">
+				<xs:annotation>
+					<xs:documentation>Благоустроенный пляж, место массовой околоводной рекреации</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010100">
+				<xs:annotation>
+					<xs:documentation>Лесопарковая зона</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010200">
+				<xs:annotation>
+					<xs:documentation>Зеленая зона</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010300">
+				<xs:annotation>
+					<xs:documentation>Озелененные территории общего пользования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010400">
+				<xs:annotation>
+					<xs:documentation>Озелененные территории ограниченного пользования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010500">
+				<xs:annotation>
+					<xs:documentation>Озелененные территории специального назначения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010600">
+				<xs:annotation>
+					<xs:documentation>Иные озеленённые территории в соответствии с региональным законодательством и актами местного самоуправления</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="705010800">
+				<xs:annotation>
+					<xs:documentation>Границы ключевых орнитологических территорий (КОТР)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Agriculture_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Предприятия и объекты сельского и лесного хозяйства, рыболовства и рыбоводства»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602020201">
+				<xs:annotation>
+					<xs:documentation>Предприятие растениеводства</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020202">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению молочного крупного рогатого скота, производство сырого молока</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020203">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению прочих пород крупного рогатого скота и буйволов, производство спермы</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020204">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению лошадей и прочих животных семейства лошадиных</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020205">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению верблюдов и прочих животных семейства верблюжьих</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020206">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению овец и коз</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020207">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению свиней</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020208">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению сельскохозяйственной птицы</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020209">
+				<xs:annotation>
+					<xs:documentation>Предприятие пчеловодства</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020210">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению кроликов и прочих пушных зверей на фермах</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020211">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению оленей</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020212">
+				<xs:annotation>
+					<xs:documentation>Предприятие по разведению прочих животных</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020213">
+				<xs:annotation>
+					<xs:documentation>Предприятие смешанное - растениеводство в сочетании с животноводством без специализированного производства культур или животных</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020214">
+				<xs:annotation>
+					<xs:documentation>Предприятие по лесоводству и лесозаготовкам</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020215">
+				<xs:annotation>
+					<xs:documentation>Предприятие по рыболовству и рыбоводству</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="WasteFacility_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты утилизации, обезвреживания, размещения отходов производства и потребления»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602020401">
+				<xs:annotation>
+					<xs:documentation>Объект размещения отходов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020402">
+				<xs:annotation>
+					<xs:documentation>Объект по обработке, утилизации, обезвреживанию отходов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020403">
+				<xs:annotation>
+					<xs:documentation>Объект утилизации, уничтожения биологических отходов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020404">
+				<xs:annotation>
+					<xs:documentation>Объект обращения с радиоактивными отходами</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020405">
+				<xs:annotation>
+					<xs:documentation>Места несанкционированного размещения отходов производства и потребления</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602020406">
+				<xs:annotation>
+					<xs:documentation>Иные объекты обращения с отходами</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Road_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Автомобильные дороги»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602030301">
+				<xs:annotation>
+					<xs:documentation>Автомобильные дороги федерального значения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602030302">
+				<xs:annotation>
+					<xs:documentation>Автомобильные дороги регионального или межмуниципального значения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602030303">
+				<xs:annotation>
+					<xs:documentation>Автомобильные дороги местного значения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602030304">
+				<xs:annotation>
+					<xs:documentation>Частные автомобильные дороги</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PublicTransportObj_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты автомобильного пассажирского транспорта»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602030701">
+				<xs:annotation>
+					<xs:documentation>Автовокзал</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602030702">
+				<xs:annotation>
+					<xs:documentation>Автостанция</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ElectricPowerStation_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Электростанции»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602040101">
+				<xs:annotation>
+					<xs:documentation>Электростанция гидравлическая (ГЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040102">
+				<xs:annotation>
+					<xs:documentation>Электростанция гидроаккумулирующая (ГАЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040103">
+				<xs:annotation>
+					<xs:documentation>Электростанция приливная (ПЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040104">
+				<xs:annotation>
+					<xs:documentation>Тепловая электростанция (ТЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040105">
+				<xs:annotation>
+					<xs:documentation>Электростанция тепловая конденсационная (КЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040106">
+				<xs:annotation>
+					<xs:documentation>Теплоэлектроцентраль (ТЭЦ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040107">
+				<xs:annotation>
+					<xs:documentation>Электростанция газотурбинная (ГТЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040108">
+				<xs:annotation>
+					<xs:documentation>Электростанция газопоршневая (ГПЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040109">
+				<xs:annotation>
+					<xs:documentation>Парогазовая электростанция (ПГЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040110">
+				<xs:annotation>
+					<xs:documentation>Плавучая электростанция (ПЛЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040111">
+				<xs:annotation>
+					<xs:documentation>Атомная электростанция (АЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040112">
+				<xs:annotation>
+					<xs:documentation>Электростанция атомная плавучая тепловая (ПАТЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040113">
+				<xs:annotation>
+					<xs:documentation>Теплоэлектроцентраль атомная (АТЭЦ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040114">
+				<xs:annotation>
+					<xs:documentation>Электростанция дизельная (ДЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040115">
+				<xs:annotation>
+					<xs:documentation>Газодизельная электростанция (ГДЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040116">
+				<xs:annotation>
+					<xs:documentation>Электростанция геотермальная (ГеоЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040117">
+				<xs:annotation>
+					<xs:documentation>Геотермальная тепловая электростанция (ГеоТЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040118">
+				<xs:annotation>
+					<xs:documentation>Электростанция ветровая (ВЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040119">
+				<xs:annotation>
+					<xs:documentation>Электростанция солнечная (СЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040120">
+				<xs:annotation>
+					<xs:documentation>Электростанция комбинированная солнечная тепловая (КСТЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040121">
+				<xs:annotation>
+					<xs:documentation>Электростанция на биомассе</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040122">
+				<xs:annotation>
+					<xs:documentation>Биогазовая станция (БГС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040123">
+				<xs:annotation>
+					<xs:documentation>Электростанция газотурбинная мобильная (МГТЭС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040201">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 1150 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040202">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 800 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040203">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 750 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040204">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 600 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040205">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 500 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040206">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 400 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040207">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 330 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040208">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 300 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040209">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 220 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040210">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 150 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040211">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 110 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040212">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 60 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040213">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 35 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040214">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 20 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040215">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 10 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040216">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 6 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040217">
+				<xs:annotation>
+					<xs:documentation>Трансформаторная подстанция (ТП)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040218">
+				<xs:annotation>
+					<xs:documentation>Распределительный пункт (РП)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040221">
+				<xs:annotation>
+					<xs:documentation>Электрическая подстанция 400 кВ преобразовательная</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040222">
+				<xs:annotation>
+					<xs:documentation>Тяговая подстанция (железной дороги)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040223">
+				<xs:annotation>
+					<xs:documentation>Переключательный пункт</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040224">
+				<xs:annotation>
+					<xs:documentation>Вставка постоянного тока</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040225">
+				<xs:annotation>
+					<xs:documentation>Соединительный пункт</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040301">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 1150 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040302">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 800 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040303">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 750 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040304">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 600 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040305">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 500 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040306">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 400 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040307">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 330 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040308">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 300 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040309">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 220 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040310">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 150 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040311">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 110 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040312">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 60 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040313">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 35 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040314">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 20 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040315">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 10 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040316">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 6 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040318">
+				<xs:annotation>
+					<xs:documentation>Линии электропередачи 0,4 кВ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="GasFacility_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты добычи и транспортировки газа»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602040501">
+				<xs:annotation>
+					<xs:documentation>Газовый промысел</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040502">
+				<xs:annotation>
+					<xs:documentation>Головные сооружения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040503">
+				<xs:annotation>
+					<xs:documentation>Установка комплексной подготовки газа (УКПГ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040504">
+				<xs:annotation>
+					<xs:documentation>Дожимная компрессорная станция</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040505">
+				<xs:annotation>
+					<xs:documentation>Компрессорная станция (КС), компрессорный цех (КЦ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040506">
+				<xs:annotation>
+					<xs:documentation>Газораспределительная станция (ГРС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040507">
+				<xs:annotation>
+					<xs:documentation>Станция подземного хранения газа (СПХГ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040508">
+				<xs:annotation>
+					<xs:documentation>Резервуарная установка сжиженных углеводородных газов (СУГ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040509">
+				<xs:annotation>
+					<xs:documentation>Завод по производству сжиженного природного газа (СПГ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040510">
+				<xs:annotation>
+					<xs:documentation>Завод по стабилизации конденсата</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040511">
+				<xs:annotation>
+					<xs:documentation>Регазификационный береговой терминал для сжиженного природного газа</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040512">
+				<xs:annotation>
+					<xs:documentation>Погрузочный береговой терминал для сжиженного природного газа</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040513">
+				<xs:annotation>
+					<xs:documentation>Газоизмерительная станция (ГИС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040514">
+				<xs:annotation>
+					<xs:documentation>Пункт редуцирования газа (ПРГ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040515">
+				<xs:annotation>
+					<xs:documentation>Газонаполнительная станция (ГНС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040516">
+				<xs:annotation>
+					<xs:documentation>Газонаполнительный пункт (ГНП)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040519">
+				<xs:annotation>
+					<xs:documentation>Газоперерабатывающий комплекс</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040520">
+				<xs:annotation>
+					<xs:documentation>Газорегуляторный пункт</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ThermalFacility_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты теплоснабжения»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602040901">
+				<xs:annotation>
+					<xs:documentation>Источник тепловой энергии</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040902">
+				<xs:annotation>
+					<xs:documentation>Центральный тепловой пункт (ЦТП)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040903">
+				<xs:annotation>
+					<xs:documentation>Индивидуальный тепловой пункт (ИТП)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602040904">
+				<xs:annotation>
+					<xs:documentation>Тепловая перекачивающая насосная станция (ТПНС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041101">
+				<xs:annotation>
+					<xs:documentation>Водозабор</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041102">
+				<xs:annotation>
+					<xs:documentation>Водопроводные очистные сооружения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041103">
+				<xs:annotation>
+					<xs:documentation>Насосная станция</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041104">
+				<xs:annotation>
+					<xs:documentation>Водонапорная башня</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041105">
+				<xs:annotation>
+					<xs:documentation>Резервуар</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041106">
+				<xs:annotation>
+					<xs:documentation>Артезианская скважина</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041301">
+				<xs:annotation>
+					<xs:documentation>Очистные сооружения (КОС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041302">
+				<xs:annotation>
+					<xs:documentation>Очистные сооружения дождевой канализации</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041303">
+				<xs:annotation>
+					<xs:documentation>Канализационная насосная станция (КНС)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041305">
+				<xs:annotation>
+					<xs:documentation>Насосная станция дождевой канализации (НСДК)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041306">
+				<xs:annotation>
+					<xs:documentation>Снегоплавильный, снегоприемный пункт</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TelecomFacility_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты связи, общественного питания, торговли и бытового обслуживания»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602041501">
+				<xs:annotation>
+					<xs:documentation>Автоматическая телефонная станция</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041502">
+				<xs:annotation>
+					<xs:documentation>Земная станция</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041503">
+				<xs:annotation>
+					<xs:documentation>Телевизионный центр</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041504">
+				<xs:annotation>
+					<xs:documentation>Телевизионный ретранслятор</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041505">
+				<xs:annotation>
+					<xs:documentation>Наземная станция (радиосвязи)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041506">
+				<xs:annotation>
+					<xs:documentation>Базовая станция</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041507">
+				<xs:annotation>
+					<xs:documentation>Узел связи оконечно-транзитный (сети передачи данных)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041508">
+				<xs:annotation>
+					<xs:documentation>Пункт коллективного доступа</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041509">
+				<xs:annotation>
+					<xs:documentation>Объекты почтовой связи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041510">
+				<xs:annotation>
+					<xs:documentation>Пункт оказаний услуг телеграфной связи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602041511">
+				<xs:annotation>
+					<xs:documentation>Иной объект связи для непосредственного обслуживания населения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010801">
+				<xs:annotation>
+					<xs:documentation>Административное здание</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010802">
+				<xs:annotation>
+					<xs:documentation>Объект проведения гражданских обрядов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010803">
+				<xs:annotation>
+					<xs:documentation>Объект религиозной организации (объединения)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010804">
+				<xs:annotation>
+					<xs:documentation>Объекты торговли, общественного питания</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010805">
+				<xs:annotation>
+					<xs:documentation>Непроизводственный объект по предоставлению населению государственных, правовых, финансовых, консультационных и иных подобных услуг</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010806">
+				<xs:annotation>
+					<xs:documentation>Непроизводственные объекты коммунально-бытового обслуживания и предоставления персональных услуг</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602010807">
+				<xs:annotation>
+					<xs:documentation>Ветеринарная лечебница, питомник животных, кинологический центр, приют для животных, иной подобный объект</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="EmergencyProtectionObj_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Объекты единой государственной системы предупреждения и ликвидации чрезвычайных ситуаций»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602050201">
+				<xs:annotation>
+					<xs:documentation>Аварийно-спасательные службы и (или) аварийно-спасательные формирования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050202">
+				<xs:annotation>
+					<xs:documentation>Объекты обеспечения пожарной безопасности, пожарные резервуары</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050203">
+				<xs:annotation>
+					<xs:documentation>Объекты лесопожарной охраны</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050204">
+				<xs:annotation>
+					<xs:documentation>Объекты мониторинга и прогнозирования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050205">
+				<xs:annotation>
+					<xs:documentation>Объекты информирования и оповещения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050206">
+				<xs:annotation>
+					<xs:documentation>Иные объекты единой государственной системы предупреждения и ликвидации чрезвычайных ситуаций</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050208">
+				<xs:annotation>
+					<xs:documentation>Объекты и сооружения гражданской обороны</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Cemetery_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Места погребения»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602050301">
+				<xs:annotation>
+					<xs:documentation>Кладбище</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050302">
+				<xs:annotation>
+					<xs:documentation>Воинское кладбище, военное мемориальное кладбище</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050303">
+				<xs:annotation>
+					<xs:documentation>Крематорий</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="602050304">
+				<xs:annotation>
+					<xs:documentation>Историческое кладбище</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="OtherObject_CLASSID">
+		<xs:annotation>
+			<xs:documentation>Перечень объектов в классе «Иные объекты федерального значения, объекты регионального значения, объекты местного значения»</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="602050601">
+				<xs:annotation>
+					<xs:documentation>Иные объекты регионального значения, объекты местного значения, установленные в соответствии с законодательством</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="EDU_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Государственные и муниципальные учебные заведения среднего профессионального образования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Общежития организаций профессионального образования</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CUL_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Универсальная библиотека\Детская библиотека\Библиотека для инвалидов по зрению\Точка доступа к полнотекстовым информационным ресурсам</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Музей (Краеведческий\Художественный\Тематический)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Театр драматический\Театр оперы и балета/музыки\Театр кукол\Театр юного зрителя\Театры по видам искусства</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Концертный зал\Филармония</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Цирковой аттракцион\Цирковая площадка</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="8">
+				<xs:annotation>
+					<xs:documentation>Дом (центр народного творчества\Дворец культуры)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>Зоопарк (ботанический сад)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="SP_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Бассейны, а также плавательные дорожки в физкультурно-оздоровительных комплексах и спортивных комплексах, доступных для массового посещения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Стадионы всех видов с трибунами</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>	
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="HEA_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Станция скорой медицинской помощи\Отделение скорой медицинской помощи (больниц, больниц скорой медицинской помощи, поликлиник) с собственным парком автомобилей скорой медицинской помощи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Краевая, республиканская, областная больница\Участковые, городские, районные больницы\Детская больница\Инфекционная, детская инфекционная больница</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Амбулатория, центр врачебной практики (семейной медицины)\Поликлиника, детская поликлиника, стоматологическая поликлиника, детская стоматологическая поликлиника, центр консультативно-диагностический и т.д.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Диспансер психоневрологический, наркологический, кожно-венерологический, противотуберкулезный, онкологический</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Детский санаторий\Детский профилакторий</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>Бюро судебно-медицинской экспертизы\морг</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="SOC_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Дом-интернат (пансионат) для детей</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Психоневрологический детский интернат</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Дом-интернат (пансионат) для престарелых и инвалидов, ветеранов войны и труда, милосердия\Специальный дом-интернат, специальный дом для одиноких престарелых\Социально-оздоровительный центр\Геронтологический центр</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Центр помощи детям, оставшимся без попечения родителей; социально-реабилитационный центр для несовершеннолетних</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Реабилитационный центр для детей и подростков с ограниченными возможностями</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>Социально-реабилитационный центр\Реабилитационный центр, для лиц с ограниченными возможностями\Кризисный центр помощи женщинам\Центр психолого-педагогической помощи населению\ центр социальной адаптации (помощи)\Дом ночного пребывания; Социальный приют\Социальная гостиница</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OTHOBJ_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Контейнерные площадки сбора ТКО\точки раздельного сбора ТКО</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>	
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TRAOB_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Автовокзал международного, межрегионального и регионального сообщения\Межмуниципального сообщения\Автостанции</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AROBJ_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Автомобильные дороги регионального, межмуниципального значения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Автомобильные дороги с твердым покрытием</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ELEC_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: перечень возможных объектов </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Региональные объекты: объекты генерации электрической энергии\объекты магистральной сети</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MCS_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Пожарные депо, точки размещения пожарной авиации</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Отдельно стоящие здания, специально оборудованные помещения аварийно-спасательных служб</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="GAS_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Объекты распределительной сети, осуществляющие передачу энергии конечному потребителю (пункты редуцирования газа, газопроводы низкого, среднего давления)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TVV_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Объекты централизованной системы теплоснабжения, осуществляющие выработку и подачу тепловой энергии конечному потребителю</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Объекты централизованной системы водоснабжения, осуществляющие отбор и подачу воды конечному потребителю</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Объекты централизованной системы водоотведения, осуществляющие сбор, отвод и очистку бытовых стоков</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OBZ_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Парки, сады, зоны отдыха\аллеи, бульвары, скверы\озелененные пешеходные зоны\газоны</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Парки, лесопарки, городские леса</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Набережные\пляжи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Парки, скверы, сады, зоны отдыха; детские площадки; общественные пространства</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Площадки выгула для собак</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>Общественные туалеты</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="7">
+				<xs:annotation>
+					<xs:documentation>Дорожки пешеходные, пандусы, лестницы</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OTUR_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Пригородные рекреационные зоны, зоны проведения организованных массовых мероприятий</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Организации отдыха детей и их оздоровления</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Кемпинг\мотель\Туристические гостиницы и комплексы\объекты информационно-справочного обслуживания туристов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Объекты информационно-справочного обслуживания туристов</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CEM_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Места на кладбищах, доступные к захоронению\Места, доступные для захоронения урнами\Колумбарий</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PRSH_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Рынки сельскохозяйственной продукции</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Агропромышленный парк</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Промышленный парк, индустриальный парк и технопарк; бизнес-инкубатор</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Нежилые помещения в 1 - 2 этажах жилой застройки, отдельно стоящие и встроено-пристроенные здания</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OBSV_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Магазины всех видов\Дома быта\Предприятия бытового обслуживания населения</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Столовые\Кафе\Рестораны\Иные предприятия общественного питания, доступные без ограничений</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Почтамт, отделение почтовой связи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Зона устойчивого приема-передачи сигнала станции сотовой связи\Общественные телефоны экстренной связи</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OTHOB_TYPE">
+		<xs:annotation>
+			<xs:documentation>Справочник: Перечень возможных объектов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Многофункциональные центры предоставления государственных и муниципальных услуг</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Приюты для животных</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Пункт охраны правопорядка</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Отделы ЗАГС субъектов Российской Федерации и муниципальных образований, осуществляющие государственную регистрацию актов гражданского состояния</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Многофункциональные молодежные центры; специализированные молодежные центры; объекты региональных и муниципальных учреждений, в сфере реализации государственной молодежной политики</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
