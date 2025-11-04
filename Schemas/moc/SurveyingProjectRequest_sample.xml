@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SurveyingProjectRequest.xsd">
+    <PlanProject>
+        <Number>1</Number>
+        <Date>2025-01-01</Date>
+        <ObjectName>Объект</ObjectName>
+    </PlanProject>
+</Request>

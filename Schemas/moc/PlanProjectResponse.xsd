@@ -90,8 +90,11 @@
     </xs:complexType>
 
     <xs:complexType name="AttachmentType">
-        <xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
             <xs:element name="Attachment">
+                <xs:annotation>
+                    <xs:documentation>Приложенные файлы</xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="IsUnstructuredFогmаt" type="xs:boolean">

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    XML-схема, описывающая структуру XML-файла, в котором приводятся сведения, содержащиеся в проекте межевания территории.
+    Настоящая схема составлена в соответствии с приложением № 2 к приказу Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 11.12.2023 № 890/пр "Об установлении требований к форматам предоставления сведений, содержащихся в проекте планировки территории и проекте межевания территории".
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Response">
+        <xs:annotation>
+            <xs:documentation>Ответ на запрос сведений, содержащихся в проекте межевания территории</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="PlanProject" type="SurveyingProjectResponseType">
+                    <xs:annotation>
+                        <xs:documentation>Информация о проекте межевания территории</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Attachments" type="AttachmentType">
+                    <xs:annotation>
+                        <xs:documentation>Описание приложенных электронных документов</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="SurveyingProjectResponseType">
+        <xs:sequence>
+            <xs:element name="NumberSurveyingProject">
+                <xs:annotation>
+                    <xs:documentation>Номер документа об утверждении проекта межевания территории</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DateSurveyingProject" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата документа об утверждении проекта межевания территории</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Other" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Иная информация о документе об утверждении проекта межевания территории</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="500"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ObjectNameSurveyingProject">
+                <xs:annotation>
+                    <xs:documentation>Наименование объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AmmendInfo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Реквизиты документов, которыми внесены изменения в проект межевания территории (при наличии)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MiscInfo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Иные сведения</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AttachmentType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="Attachment">
+                <xs:annotation>
+                    <xs:documentation>Приложенные файлы</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="IsUnstructuredFогmаt" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>Признак того, является или нет вложение неструктурированным</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="IsZipPacked" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>Признак того, будет ли вложение помещено в zip-архив</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="ZipName" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Имя архива</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:minLength value="1"/>
+                                    <xs:maxLength value="255"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="FileName">
+                            <xs:annotation>
+                                <xs:documentation>Имя файла</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:minLength value="1"/>
+                                    <xs:maxLength value="255"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="FileMimeType">
+                            <xs:annotation>
+                                <xs:documentation>Расширение файла</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="(text|image|application)\/[a-zA-Z0-9\+-.]*"></xs:pattern>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
