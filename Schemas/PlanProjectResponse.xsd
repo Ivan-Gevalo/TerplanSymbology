@@ -94,7 +94,7 @@
             <xs:element name="Attachment">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="IsunstructuredFогmаt" type="xs:boolean">
+                        <xs:element name="IsUnstructuredFогmаt" type="xs:boolean">
                             <xs:annotation>
                                 <xs:documentation>Признак того, является или нет вложение неструктурированным</xs:documentation>
                             </xs:annotation>
