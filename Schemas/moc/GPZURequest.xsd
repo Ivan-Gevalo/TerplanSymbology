@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML-схема, описывающая структуру XML-файла запроса сведений, содержащихся в градостроительном плане земельного участка.
+    Настоящая схема составлена в соответствии с приложением к приказу Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 11.12.2023 № 889/пр "Об установлении требований к формату предоставления сведений, содержащихся в градостроительном плане земельного участка".
+
+    Используемые сокращения:
+    ГПЗУ - градостроительный план земельного участка;
+    ЗУ - земельный участок.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Request">
+        <xs:annotation>
+            <xs:documentation>Запрос сведений, содержащихся в ГПЗУ</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="GPZUNumber">
+                    <xs:annotation>
+                        <xs:documentation>Номер ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="45"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ZUCadastralNumber" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Кадастровый номер ЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="40"/>
+                            <xs:pattern value="\d+:\d+:\d+:\d+"></xs:pattern>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

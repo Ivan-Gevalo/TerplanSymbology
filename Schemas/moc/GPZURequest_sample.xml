@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GPZURequest.xsd">
+    <GPZUNumber>РФ-01-1-01-3-01-2025-0001-0</GPZUNumber>
+    <ZUCadastralNumber>00:00:0000000:0001</ZUCadastralNumber>
+</Request>

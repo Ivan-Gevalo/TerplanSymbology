@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML-схема, описывающая структуру XML-файла, в котором приводятся сведения, содержащиеся в градостроительном плане земельного участка.
+    Настоящая схема составлена в соответствии с приложением к приказу Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 11.12.2023 № 889/пр "Об установлении требований к формату предоставления сведений, содержащихся в градостроительном плане земельного участка".
+
+    Используемые сокращения:
+    ГПЗУ - градостроительный план земельного участка;
+    ЗУ - земельный участок.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Response">
+        <xs:annotation>
+            <xs:documentation>Ответ на запрос сведений, содержащихся в ГПЗУ</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="GPZUNumber">
+                    <xs:annotation>
+                        <xs:documentation>Номер ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="45"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ApplicantInfo" type="ApplicantInfoType">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о заявителе, подавшем заявление о выдаче ГПЗУ (далее - заявитель)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ZULocation" type="LocationType">
+                    <xs:annotation>
+                        <xs:documentation>Местонахождение ЗУ</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ZUBorder" type="BorderType" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Описание границ ЗУ (образуемого ЗУ)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="CadastralNumber" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Кадастровый номер ЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="40"/>
+                            <xs:pattern value="\d+:\d+:\d+:\d+"></xs:pattern>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ConditionalNumber" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Условный номер образуемого ЗУ на основании утвержденных проекта межевания территории и (или) схемы расположения ЗУ или земельных участков на кадастровом плане территории</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="40"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ZUArea" type="AreaType">
+                    <xs:annotation>
+                        <xs:documentation>Площадь ЗУ</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ObjectsNumber">
+                    <xs:annotation>
+                        <xs:documentation>Информация о расположенных в границах ЗУ объектах капитального строительства</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="40"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ObjectBorder" type="BorderType" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Информация о границах зоны планируемого размещения объекта капитального строительства в соответствии с утвержденным проектом планировки территории</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ProjectPlan" type="ProjectPlanInfo">
+                    <xs:annotation>
+                        <xs:documentation>Реквизиты проекта планировки территории и (или) проекта межевания территории в случае, если ЗУ расположен в границах территории, в отношении которой утверждены проект планировки территории и (или) проект межевания территории</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="IssuedAgency">
+                    <xs:annotation>
+                        <xs:documentation>Наименование органа, выдавшего ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="500"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="EmployeeInfo" type="EmployeeType">
+                    <xs:annotation>
+                        <xs:documentation>Сведения об уполномоченном сотруднике органа, выдавшего ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="IssueDate" type="xs:date">
+                    <xs:annotation>
+                        <xs:documentation>Дата выдачи ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ScaleName">
+                    <xs:annotation>
+                        <xs:documentation>Масштаб, дата, наименование организации, подготовившей топографическую основу ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="500"/>
+                            <xs:pattern value="1:\d{3,4}, \d{4}-\d{2}-\d{2}, [a-zA-Zа-яА-Я0-9\s\S]*"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="DevName">
+                    <xs:annotation>
+                        <xs:documentation>Дата, наименование организации, разработавшей чертежи ГПЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="500"/>
+                            <xs:pattern value="\d{4}-\d{2}-\d{2}, [a-zA-Zа-яА-Я0-9\s\S]*"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="UrbanPlanRegInfo">
+                    <xs:annotation>
+                        <xs:documentation>Информация о градостроительном регламенте либо требованиях к назначению, параметрам и размещению объекта капитального строительства на ЗУ, на который действие градостроительного регламента не распространяется или для которого градостроительный регламент не устанавливается</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="UrbanPlanAct">
+                    <xs:annotation>
+                        <xs:documentation>Реквизиты акта органа государственной власти субъекта Российской Федерации, органа местного самоуправления, содержащего градостроительный регламент либо реквизиты акта федерального органа государственной власти, органа государственной власти субъекта Российской Федерации, органа местного самоуправления, иной организации, определяющего в соответствии с федеральными законами порядок использования ЗУ, на который действие градостроительного регламента не распространяется или для которого градостроительный регламент не устанавливается</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="500"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="UsagePermits">
+                    <xs:annotation>
+                        <xs:documentation>Информация о видах разрешенного использования ЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="1000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="MinMaxLimits">
+                    <xs:annotation>
+                        <xs:documentation>Предельные (минимальные и (или) максимальные) размеры ЗУ и предельные параметры разрешенного строительства, реконструкции объекта капитального строительства, установленные градостроительным регламентом для территориальной зоны, в которой расположен ЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="5000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="PurposeRequirements">
+                    <xs:annotation>
+                        <xs:documentation>Требования к назначению, параметрам и размещению объекта капитального строительства на ЗУ, на который действие градостроительного регламента не распространяется или для которого градостроительный регламент не устанавливается</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="5000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="MinMaxRequirementsNature">
+                    <xs:annotation>
+                        <xs:documentation>Предельные параметры разрешенного строительства, реконструкции объекта капитального строительства, установленные положением об особо охраняемых природных территориях, в случае выдачи ГПЗУ в отношении ЗУ, расположенного в границах особо охраняемой природной территории</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="5000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ZUObjects" type="ZUObjectsType">
+                    <xs:annotation>
+                        <xs:documentation>Информация о расположенных в границах ЗУ объектах капитального строительства и объектах культурного наследия</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="MinIndicators">
+                    <xs:annotation>
+                        <xs:documentation>Информация о расчетных показателях минимально допустимого уровня обеспеченности территории объектами коммунальной, транспортной, социальной инфраструктур и расчетных показателях максимально допустимого уровня территориальной доступности указанных объектов для населения в случае, если ЗУ расположен в границах территории, в отношении которой предусматривается осуществление деятельности по комплексному развитию территории</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="UseRestrictions">
+                    <xs:annotation>
+                        <xs:documentation>Информация об ограничениях использования ЗУ, в том числе если ЗУ полностью или частично расположен в границах зон с особыми условиями использования территорий</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="RestrictionsBorder" type="BorderType">
+                    <xs:annotation>
+                        <xs:documentation>Информация о границах зон с особыми условиями использования территорий, если ЗУ полностью или частично расположен в границах таких зон</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="RestrictionObj" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Наименование зоны с особыми условиями использования территории, с указанием объекта, в отношении которого она установлена</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="1000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="EasementsBorder" type="BorderType">
+                    <xs:annotation>
+                        <xs:documentation>Информация о границах публичных сервитутов</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="EasementsInfo">
+                    <xs:annotation>
+                        <xs:documentation>Информация о площади публичных сервитутов в квадратных метрах или гектарах, реквизиты распорядительного акта уполномоченного органа об установлении публичного сервитута</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="1000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="PlanComponent">
+                    <xs:annotation>
+                        <xs:documentation>Номер и (или) наименование элемента планировочной структуры, в границах которого расположен ЗУ</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="GridConnection">
+                    <xs:annotation>
+                        <xs:documentation>Информация о возможности подключения (технологического присоединения) объектов капитального строительства к сетям инженерно-технического обеспечения (за исключением сетей электроснабжения), в состав которой входят сведения о максимальной нагрузке в возможных точках подключения (технологического присоединения) к таким сетям, а также сведения об организации, представившей данную информацию</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ByLawInfo">
+                    <xs:annotation>
+                        <xs:documentation>Реквизиты нормативных правовых актов субъекта Российской Федерации, муниципальных правовых актов, устанавливающих требования к благоустройству территории</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="RedLineInfo" type="BorderType">
+                    <xs:annotation>
+                        <xs:documentation>Информация о красных линиях</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ArchitectImage" type="ArchitectRequirement">
+                    <xs:annotation>
+                        <xs:documentation>При наличии - информация о требованиях к архитектурно-градостроительному облику объекта капитального строительства (далее - требования к архитектурному облику)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Attachments" type="AttachmentType" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Описание приложенных файлов</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Описание комплексных типов полей ответа на запрос сведений, содержащихся в ГПЗУ -->
+    <xs:complexType name="ApplicantInfoType">
+        <xs:sequence>
+            <xs:element name="ApplicantType">
+                <xs:annotation>
+                    <xs:documentation>Тип заявителя</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:positiveInteger">
+                        <xs:enumeration value="1">
+                            <xs:annotation>
+                                <xs:documentation>Юридическое лицо</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="2">
+                            <xs:annotation>
+                                <xs:documentation>Физическое лицо</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Surname" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Фамилия (обязательный при ApplicantType=2, отсутствует при ApplicantType=1)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Name" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Имя (обязательный при ApplicantType=2, отсутствует при ApplicantType=1)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MiddleName" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Отчество (необязательный при ApplicantType=2, отсутствует при ApplicantType=1)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OrganizationName" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Полное наименование юридического лица (обязательный при ApplicantType=1, отсутствует при ApplicantType=2)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OKOPF" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Организационно-правовая форма (код Общероссийского классификатора организационно-правовых форм)/Обязательный при ApplicantType=1, отсутствует при ApplicantType=2</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="20"/>
+                        <xs:pattern value="\d+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="GPZURegister">
+                <xs:annotation>
+                    <xs:documentation>Реквизиты заявления о выдаче ГПЗУ</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LocationType">
+        <xs:sequence>
+            <xs:element name="Region">
+                <xs:annotation>
+                    <xs:documentation>Субъект Российской Федерации</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="District" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Муниципальный район</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="City" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Поселение</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CityDistrict" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Городской округ</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BorderType">
+        <xs:sequence>
+            <xs:element name="Point" type="PointType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Перечень координат характерных точек в системе координат, используемой для ведения Единого государственного реестра недвижимости, составляющих границу ЗУ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="BorderName" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Наименование территории, обозначенной границей ЗУ</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AreaType">
+        <xs:sequence>
+            <xs:element name="AreaValue" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>Значение площади</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MeasureUnit">
+                <xs:annotation>
+                    <xs:documentation>Наименование единицы измерения</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProjectPlanInfo">
+        <xs:sequence>
+            <xs:element name="ProjectPlanDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата документа, утвердившего проект планировки территории</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProjectPlanNumber" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Номер документа, утвердившего проект планировки территории</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="500"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ProjectPlanAuthority" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Наименование органа, утвердившего проект планировки территории</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="500"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SurveyingProjectDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата документа, утвердившего проект межевания территории</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SurveyingProjectNumber" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Номер документа, утвердившего проект межевания территории</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="500"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SurveyingProjectAuthority" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Наименование органа, утвердившего проект межевания территории</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="500"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EmployeeType">
+        <xs:sequence>
+            <xs:element name="Surname">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Name">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MiddleName" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Post">
+                <xs:annotation>
+                    <xs:documentation>Должность</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="500"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ZUObjectsType">
+        <xs:sequence>
+            <xs:element name="CapitalObjects">
+                <xs:annotation>
+                    <xs:documentation>Информация об объектах капитального строительства, содержащаяся в Едином государственном реестре недвижимости, государственных информационных системах обеспечения градостроительной деятельности субъектов Российской Федерации</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="1000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CultureObjects">
+                <xs:annotation>
+                    <xs:documentation>Информация об объектах, включенных в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, содержащаяся в Едином государственном реестре недвижимости, едином государственном реестре объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, государственных информационных системах обеспечения градостроительной деятельности субъектов Российской Федерации</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="1000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PointType">
+        <xs:sequence>
+            <xs:element name="PointNumber" type="xs:positiveInteger">
+                <xs:annotation>
+                    <xs:documentation>Обозначение (номер) характерной точки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="X" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>Координата X характерной точки в системе координат, используемой для ведения Единого государственного реестра недвижимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Y" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>Координата Y характерной точки в системе координат, используемой для ведения Единого государственного реестра недвижимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ArchitectRequirement">
+        <xs:sequence>
+            <xs:element name="RequirementName">
+                <xs:annotation>
+                    <xs:documentation>Требование к архитектурному облику</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="RequirementIndicator">
+                <xs:annotation>
+                    <xs:documentation>Показатель</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="RequirementNumber">
+                <xs:annotation>
+                    <xs:documentation>Номер требования к архитектурному облику</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AttachmentType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="Attachment">
+                <xs:annotation>
+                    <xs:documentation>Приложенные файлы</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="IsUnstructuredFormat" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>Признак того, является или нет вложение неструктурированным</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="IsZipPacked" type="xs:boolean">
+                            <xs:annotation>
+                                <xs:documentation>Признак того, будет ли вложение помещено в zip-архив</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="CodeDocument" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Код Документа</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:minLength value="1"/>
+                                    <xs:maxLength value="255"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="ZipName" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Имя архива</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:minLength value="1"/>
+                                    <xs:maxLength value="255"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="FileName">
+                            <xs:annotation>
+                                <xs:documentation>Имя файла</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:minLength value="1"/>
+                                    <xs:maxLength value="255"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="FileMimeType">
+                            <xs:annotation>
+                                <xs:documentation>Расширение файла</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="(text|image|application)\/[a-zA-Z0-9\-+.]*"></xs:pattern>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

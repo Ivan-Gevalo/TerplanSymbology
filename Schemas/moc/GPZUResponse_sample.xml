@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GPZUResponse.xsd">
+    <GPZUNumber>РФ-01-1-01-3-01-2025-0001-0</GPZUNumber>
+    <ApplicantInfo>
+        <ApplicantType>2</ApplicantType>
+        <Surname>Иванов</Surname>
+        <Name>Иван</Name>
+        <MiddleName>Иванович</MiddleName>
+        <GPZURegister>Заявление № 1 от 01.12.2024</GPZURegister>
+    </ApplicantInfo>
+    <ZULocation>
+        <Region>01</Region>
+        <CityDistrict>Муниципалный округ</CityDistrict>
+    </ZULocation>
+    <ZUBorder>
+        <Point>
+            <PointNumber>1</PointNumber>
+            <X>4229117.31</X>
+            <Y>7542997.52</Y>
+        </Point>
+        <Point>
+            <PointNumber>2</PointNumber>
+            <X>4228947.60</X>
+            <Y>7543043.39</Y>
+        </Point>
+        <Point>
+            <PointNumber>3</PointNumber>
+            <X>4228988.88</X>
+            <Y>7543205.46</Y>
+        </Point>
+        <Point>
+            <PointNumber>4</PointNumber>
+            <X>4229018.92</X>
+            <Y>7543111.52</Y>
+        </Point>
+        <Point>
+            <PointNumber>1</PointNumber>
+            <X>4229117.31</X>
+            <Y>7542997.52</Y>
+        </Point>
+    </ZUBorder>
+    <CadastralNumber>00:00:0000000:0001</CadastralNumber>
+    <ZUArea>
+        <AreaValue>1500.00</AreaValue>
+        <MeasureUnit>кв. м</MeasureUnit>
+    </ZUArea>
+    <ObjectsNumber>Объекты кап. строительства отсутствуют</ObjectsNumber>
+    <ProjectPlan>
+        <ProjectPlanDate>2024-07-05</ProjectPlanDate>
+        <ProjectPlanNumber>12</ProjectPlanNumber>
+        <ProjectPlanAuthority>Администрация муниципального образования</ProjectPlanAuthority>
+    </ProjectPlan>
+    <IssuedAgency>Администрация муниципального образования</IssuedAgency>
+    <EmployeeInfo>
+        <Surname>Сидоров</Surname>
+        <Name>Федор</Name>
+        <MiddleName>Петрович</MiddleName>
+        <Post>Главный архитектор муниципального образования</Post>
+    </EmployeeInfo>
+    <IssueDate>2025-01-01</IssueDate>
+    <ScaleName>1:500, 2024-12-12, ООО "Рога и копыта"</ScaleName>
+    <DevName>2024-12-20, ООО "Рога и копыта"</DevName>
+    <UrbanPlanRegInfo>Информация о градостроительном регламенте</UrbanPlanRegInfo>
+    <UrbanPlanAct>Постановление Администрации муниципального образования от 05.02.20219 № 6</UrbanPlanAct>
+    <UsagePermits>Основной вид разрешенного использования - магазины</UsagePermits>
+    <MinMaxLimits>Минимальная площадь земельного участка - 50 кв. м, максимальный процент застройки - 50%, максимальная высота зданий - 20 м</MinMaxLimits>
+    <PurposeRequirements>Информация отсутствует</PurposeRequirements>
+    <MinMaxRequirementsNature>Информация отсутствует</MinMaxRequirementsNature>
+    <ZUObjects>
+        <CapitalObjects>Информация отсутствует</CapitalObjects>
+        <CultureObjects>Информация отсутствует</CultureObjects>
+    </ZUObjects>
+    <MinIndicators>Информация отсутствует</MinIndicators>
+    <UseRestrictions>Ограничения по использованию земельных участков, расположенных в границах водоохранных зон, установлены часть 15 статьи 65 Водного кодекса Российской Федерации</UseRestrictions>
+    <RestrictionsBorder>
+        <Point>
+            <PointNumber>1</PointNumber>
+            <X>4229117.31</X>
+            <Y>7542997.52</Y>
+        </Point>
+        <Point>
+            <PointNumber>2</PointNumber>
+            <X>4228947.60</X>
+            <Y>7543043.39</Y>
+        </Point>
+        <Point>
+            <PointNumber>3</PointNumber>
+            <X>4228988.88</X>
+            <Y>7543205.46</Y>
+        </Point>
+        <Point>
+            <PointNumber>4</PointNumber>
+            <X>4229018.92</X>
+            <Y>7543111.52</Y>
+        </Point>
+        <Point>
+            <PointNumber>1</PointNumber>
+            <X>4229117.31</X>
+            <Y>7542997.52</Y>
+        </Point>
+        <BorderName>Водоохранная зона</BorderName>
+    </RestrictionsBorder>
+    <RestrictionObj>Водоохранная зона реки Малая речка</RestrictionObj>
+    <EasementsBorder>
+        <BorderName>Информация отсутствует</BorderName>
+    </EasementsBorder>
+    <EasementsInfo>Информация отсутствует</EasementsInfo>
+    <PlanComponent>Квартал</PlanComponent>
+    <GridConnection>Подключение к электричским сетям в соответствии с техническими условиями от 04.04.2023 № ТУ/56/2023, выданными ООО "Электрик"</GridConnection>
+    <ByLawInfo>Решение Собрания депутатов муниципального образования от 15.09.2016 № 31</ByLawInfo>
+    <RedLineInfo>
+        <Point>
+            <PointNumber>1</PointNumber>
+            <X>4229117.31</X>
+            <Y>7542997.52</Y>
+        </Point>
+        <Point>
+            <PointNumber>2</PointNumber>
+            <X>4228947.60</X>
+            <Y>7543043.39</Y>
+        </Point>
+    </RedLineInfo>
+    <ArchitectImage>
+        <RequirementName>Требования к архитектурно-градостроительному облику ОКС не установлены</RequirementName>
+        <RequirementIndicator>Информация отсутствует</RequirementIndicator>
+        <RequirementNumber>Информация отсутствует</RequirementNumber>
+    </ArchitectImage>
+    <Attachments>
+        <Attachment>
+            <IsUnstructuredFormat>false</IsUnstructuredFormat>
+            <IsZipPacked>false</IsZipPacked>
+            <FileName>Градостроительный план земельного участка</FileName>
+            <FileMimeType>image/pdf</FileMimeType>
+        </Attachment>
+    </Attachments>
+</Response>
