@@ -13,7 +13,7 @@
       <NUMBER>-</NUMBER>
       <NAME>Здание администрации сельского поселения</NAME>
       <OKTMO>12345678</OKTMO>
-      <ADDRESS></ADDRESS>
+      <ADDRESS>-</ADDRESS>
       <AB_STYPE>3</AB_STYPE>
       <CR_STYPE>0</CR_STYPE>
       <TRD_STYPE>0</TRD_STYPE>
