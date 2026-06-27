@@ -19,7 +19,8 @@
     </about>
     <version>0.5b</version>
     <homepage>https://sites.google.com/view/terplan-symbology</homepage>
-    <qgis_minimum_version>3.0</qgis_minimum_version>
+    <qgis_minimum_version>3.28</qgis_minimum_version>
+    <qgis_maximum_version>3.99</qgis_maximum_version>
     <file_name>tp_exporter.zip</file_name>
     <icon>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/18e19663b8ab6b1ae8c0377c121ee2645ad9e469/QGIS%20Plugins/Terplan%20Exporter/icon.png?raw=True</icon>
     <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Terplan%20Exporter/tp_exporter.zip?raw=True</download_url>
@@ -51,9 +52,9 @@
     <version>0.5b</version>
     <homepage>https://sites.google.com/view/terplan-symbology</homepage>
     <qgis_minimum_version>4.0</qgis_minimum_version>
-    <file_name>tp_exporter-Qt6.zip</file_name>
+    <file_name>tp_exporter.zip</file_name>
     <icon>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/18e19663b8ab6b1ae8c0377c121ee2645ad9e469/QGIS%20Plugins/Terplan%20Exporter/icon.png?raw=True</icon>
-    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Terplan%20Exporter/tp_exporter-Qt6.zip?raw=True</download_url>
+    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Terplan%20Exporter/QGIS4/tp_exporter.zip?raw=True</download_url>
     <author_name>Ivan Gevalo</author_name>
     <experimental>False</experimental>
     <deprecated>False</deprecated>
