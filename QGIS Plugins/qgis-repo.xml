@@ -79,9 +79,37 @@
     <version>0.1c</version>
     <homepage>https://sites.google.com/view/terplan-symbology</homepage>
     <qgis_minimum_version>3.28</qgis_minimum_version>
+    <qgis_maximum_version>3.99</qgis_maximum_version>
     <file_name>layer_importer.zip</file_name>
     <icon>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/37a87cdf07fa67190c8309a51ac8ef57bf23d5b3/QGIS%20Plugins/Layer%20Importer/icon.png?raw=True</icon>
     <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Layer%20Importer/layer_importer.zip?raw=True</download_url>
+    <author_name>Ivan Gevalo</author_name>
+    <experimental>False</experimental>
+    <deprecated>False</deprecated>
+    <tracker></tracker>
+    <repository>https://github.com/Ivan-Gevalo/TerplanSymbology</repository>
+    <tags>database</tags>
+  </pyqgis_plugin>
+
+  <pyqgis_plugin name="Layer Importer (QGIS4)" version="0.1c">
+    <description>Модуль для импорта векторных слоев, содержащихся в составе библиотек слоев terplan-layer-library-v2, gisogd-layer-library-v1</description>
+    <about>Модуль представляет собой надстройку над библиотеками слоев terplan-layer-library-v2, gisogd-layer-library-v1.1 и обеспечивает более удобный и быстрый способ добавления векторных слоев в проект и их перепроецирование в требуемую систему координат. Указанные библиотеки слоев могут быть использованы при подготовке проектов территориального планирования в соответствии с требованиями, утвержденными приказом Министерства экономического развития Российской Федерации от 09.01.2018 № 10, а также векторных моделей по техническим требованиям, утвержденным приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 06.08.2020 № 433/пр, подлежащих размещению в государственных информационных системах обеспечения градостроительной деятельности.
+ 
+      Основные возможности:
+      - пакетный импорт векторных слоев в проект;
+      - сохранение векторных слоев в файл локальной базы геоданных в формате GeoPackage с предварительным перепроецированием в систему координат, указанную пользователем (в том числе обеспечена возможность сохранения векторных слоев в уже существующий GeoPackage файл);
+      - запись слоев с уникальными именами для обеспечения хранения нескольких слоев, отнесенных к одному классу объектов, в составе файла локальной базы геоданных;
+      - настройка отображения имен импортированных слоев;
+      - настройка отображения имен полей слоев в пользовательских формах, таблице атрибутов;
+      - возможность отключения принудительного ограничения полей при проверке значений отдельных атрибутов у создаваемых и редактируемых объектов;
+      - автоматическое применение стилей к импортированным слоям на основе установленных параметров.
+    </about>
+    <version>0.1c</version>
+    <homepage>https://sites.google.com/view/terplan-symbology</homepage>
+    <qgis_minimum_version>4.0</qgis_minimum_version>
+    <file_name>layer_importer.zip</file_name>
+    <icon>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/37a87cdf07fa67190c8309a51ac8ef57bf23d5b3/QGIS%20Plugins/Layer%20Importer/icon.png?raw=True</icon>
+    <download_url>https://github.com/Ivan-Gevalo/TerplanSymbology/blob/main/QGIS%20Plugins/Layer%20Importer/QGIS4/layer_importer.zip?raw=True</download_url>
     <author_name>Ivan Gevalo</author_name>
     <experimental>False</experimental>
     <deprecated>False</deprecated>
