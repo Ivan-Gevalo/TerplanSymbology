@@ -26,11 +26,11 @@
             <POP_DEN>50.0</POP_DEN>
             <POPULATION>108</POPULATION>
             <STATUS>1</STATUS>
-            <gml:MultiSurface srsName="EPSG:3857">
+            <gml:MultiSurface srsName="EPSG:3857" gml:id="geom_0215d4c4-f980-4cc8-a261-72b714fadf53">
                 <gml:surfaceMember>
                     <gml:Polygon>
                         <gml:exterior>
-                            <gml:LinearRing>
+                            <gml:LinearRing gml:id="geom_0215d4c4-f980-4cc8-a261-72b714fadf53.0">
                                 <gml:posList>8251949.13580445 8168725.00925054 8251952.99554267 8168689.41388697 8251968.86335535 8168638.80843032 8252001.45670031 8168619.93859903 8252081.6534833 8168607.93052457 8252130.11464093 8168616.07886081 8252136.54753797 8168656.3916822 8252123.6817439 8168695.846784 8252046.91583933 8168751.16969847 8251983.44458862 8168771.75496897 8251949.13580445 8168725.00925054</gml:posList>
                             </gml:LinearRing>
                         </gml:exterior>
@@ -45,11 +45,11 @@
             <CLASSID>701010703</CLASSID>
             <AREA>1.07</AREA>
             <STATUS>1</STATUS>
-            <gml:MultiSurface srsName="EPSG:3857">
+            <gml:MultiSurface srsName="EPSG:3857" gml:id="geom_948f8bb2-5a35-493c-a236-ecb0d31270fb">
                 <gml:surfaceMember>
                     <gml:Polygon>
                         <gml:exterior>
-                            <gml:LinearRing>
+                            <gml:LinearRing gml:id="geom_948f8bb2-5a35-493c-a236-ecb0d31270fb.0">
                                 <gml:posList>8252123.6817439 8168695.846784 8252136.54753797 8168656.3916822 8252171.28518193 8168652.53194399 8252234.32757284 8168674.83265369 8252205.1651063 8168720.29179272 8252154.13078985 8168740.87706322 8252106.52735182 8168755.45829649 8252075.22058627 8168778.6167258 8252054.63531577 8168781.18988461 8252034.47890507 8168779.90330521 8252046.91583933 8168751.16969847 8252123.6817439 8168695.846784</gml:posList>
                             </gml:LinearRing>
                         </gml:exterior>
@@ -65,9 +65,9 @@
             <FZ_MFSTP>3</FZ_MFSTP>
             <AREA>0.49</AREA>
             <STATUS>1</STATUS>
-            <gml:MultiSurface srsName="EPSG:3857">
+            <gml:MultiSurface srsName="EPSG:3857" gml:id="geom_0a99fba0-ded8-4692-862b-7b91dcfad02f">
                 <gml:surfaceMember>
-                    <gml:Polygon>
+                    <gml:Polygon gml:id="geom_0a99fba0-ded8-4692-862b-7b91dcfad02f.0">
                         <gml:exterior>
                             <gml:LinearRing>
                                 <gml:posList>8252205.1651063 8168720.29179272 8252234.32757284 8168674.83265369 8252320.09953326 8168701.85082123 8252284.07530989 8168752.88513768 8252205.1651063 8168720.29179272</gml:posList>
@@ -86,9 +86,9 @@
             <AREA>0.71</AREA>
             <STATUS>2</STATUS>
             <REG_STATUS>5</REG_STATUS>
-            <gml:MultiSurface srsName="EPSG:3857">
+            <gml:MultiSurface srsName="EPSG:3857" gml:id="geom_f3f7702a-8e85-410c-8eec-b011b28e4edd">
                 <gml:surfaceMember>
-                    <gml:Polygon>
+                    <gml:Polygon gml:id="geom_f3f7702a-8e85-410c-8eec-b011b28e4edd.0">
                         <gml:exterior>
                             <gml:LinearRing>
                                 <gml:posList>8252205.1651063 8168720.29179272 8252154.13078985 8168740.87706322 8252106.52735182 8168755.45829649 8252121.10858509 8168786.76506204 8252139.12069678 8168800.48857571 8252169.99860253 8168800.91743551 8252188.01071422 8168784.19190323 8252218.88861997 8168769.18181016 8252284.07530989 8168752.88513768 8252205.1651063 8168720.29179272</gml:posList>
