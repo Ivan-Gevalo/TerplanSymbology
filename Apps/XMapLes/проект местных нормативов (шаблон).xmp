@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NGPProject name="Нормативы градостроительного проектирования" version="1.0">
+  <features>
+    <feature uuid="6f821e36-8f6d-4f2b-9087-428127af2818" class="Education">
+      <attributes>
+        <attribute name="CLASSID" value="602010101"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="ASLIT_OBES" value="55"/>
+        <attribute name="MXDOS" value="500"/>
+        <attribute name="RZUDOS" value="44"/>
+      </attributes>
+    </feature>
+    <feature uuid="83b99559-285b-4c00-ae61-016199c00b3e" class="Education">
+      <attributes>
+        <attribute name="CLASSID" value="602010101"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="ASLIT_OBES" value="44"/>
+        <attribute name="MXDOS" value="1000"/>
+        <attribute name="RZUDOS" value="44"/>
+      </attributes>
+    </feature>
+    <feature uuid="65da9507-d408-48d3-be15-ed3ac90073c9" class="Education">
+      <attributes>
+        <attribute name="CLASSID" value="602010102"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="RZUDOS" value="70"/>
+      </attributes>
+    </feature>
+    <feature uuid="fd8140e6-faed-4efe-a578-e91b217ed168" class="Health">
+      <attributes>
+        <attribute name="CLASSID" value="602010402"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="AMB_OBES" value="24"/>
+        <attribute name="MXDOS" value="1000"/>
+        <attribute name="TR_DOS" value="20"/>
+      </attributes>
+    </feature>
+    <feature uuid="38fbd702-3e6c-4755-ab0c-c5d846653bb5" class="Health">
+      <attributes>
+        <attribute name="CLASSID" value="602010407"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="HEA_TYPE" value="1"/>
+        <attribute name="HEAGOR_OBES" value="1"/>
+        <attribute name="TR_DOS" value="20"/>
+      </attributes>
+    </feature>
+    <feature uuid="475773cd-3a2d-4f2a-9e93-70bc800b9b17" class="Health">
+      <attributes>
+        <attribute name="CLASSID" value="602010408"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="MXDOS" value="500"/>
+      </attributes>
+    </feature>
+    <feature uuid="65c1696c-bd9b-47c0-b527-2a63377c5deb" class="Social">
+      <attributes>
+        <attribute name="CLASSID" value="602010501"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="SOC_TYPE" value="3"/>
+        <attribute name="RZUDOS" value="60"/>
+      </attributes>
+    </feature>
+    <feature uuid="48b592fd-6106-4b1f-ac93-d9e5f7a20dbe" class="Sport">
+      <attributes>
+        <attribute name="CLASSID" value="602010302"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="SP_TYPE" value="2"/>
+        <attribute name="SP_OBES" value="1"/>
+        <attribute name="TR_DOS" value="60"/>
+      </attributes>
+    </feature>
+    <feature uuid="3123bdb1-ff68-4ba2-bffd-978bae4c8f45" class="Sport">
+      <attributes>
+        <attribute name="CLASSID" value="602010302"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="SP_OBES" value="110"/>
+        <attribute name="MXDOS" value="1500"/>
+      </attributes>
+    </feature>
+    <feature uuid="eb873043-f36d-4c03-99e7-b49ad32d524e" class="Sport">
+      <attributes>
+        <attribute name="CLASSID" value="602010301"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="SP_OBES" value="59"/>
+        <attribute name="MXDOS" value="1000"/>
+      </attributes>
+    </feature>
+    <feature uuid="71571ca1-a129-4036-88ec-4f6e3b331212" class="Sport">
+      <attributes>
+        <attribute name="CLASSID" value="602010301"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="SP_TYPE" value="1"/>
+        <attribute name="SP_OBES" value="5"/>
+        <attribute name="TR_DOS" value="60"/>
+      </attributes>
+    </feature>
+    <feature uuid="05cda452-f5d5-4c07-b420-0ba62b310999" class="TelecomFacility">
+      <attributes>
+        <attribute name="CLASSID" value="602010804"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="OBSV_TYPE" value="2"/>
+        <attribute name="CAF_OBES" value="40"/>
+        <attribute name="MXDOS" value="500"/>
+      </attributes>
+    </feature>
+    <feature uuid="e84a2f0c-e34f-42a7-83d2-2882ad1b8ef3" class="Public">
+      <attributes>
+        <attribute name="CLASSID" value="705010300"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="OBZ_TYPE" value="4"/>
+        <attribute name="MXDOS" value="400"/>
+      </attributes>
+    </feature>
+    <feature uuid="671a8503-8d06-4ad0-a9f4-525a1359da5e" class="Public">
+      <attributes>
+        <attribute name="CLASSID" value="705010600"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="OBZ_TYPE" value="5"/>
+        <attribute name="MXDOS" value="15"/>
+      </attributes>
+    </feature>
+    <feature uuid="feb95dc5-64df-44c2-a08d-5e7b06513d50" class="EmergencyProtectionObj">
+      <attributes>
+        <attribute name="CLASSID" value="602050202"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="MCS_TYPE" value="1"/>
+        <attribute name="TR_DOS" value="10"/>
+      </attributes>
+    </feature>
+    <feature uuid="f2ecd36c-d4eb-4b98-989b-054da67a7443" class="EmergencyProtectionObj">
+      <attributes>
+        <attribute name="CLASSID" value="602050201"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="MCS_TYPE" value="2"/>
+        <attribute name="YR_OBES" value="1"/>
+      </attributes>
+    </feature>
+    <feature uuid="21ed6506-b66a-4647-91cd-674e3745f665" class="EmergencyProtectionObj">
+      <attributes>
+        <attribute name="CLASSID" value="602050208"/>
+        <attribute name="OKTMO" value="60602000"/>
+        <attribute name="MXDOS" value="200"/>
+      </attributes>
+    </feature>
+  </features>
+</NGPProject>
