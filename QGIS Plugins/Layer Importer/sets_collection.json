@@ -5713,7 +5713,7 @@
                             "type": "String",
                             "length": 0
                         },
-                        "MAIN_ACTIV": {
+                        "MAIN_ACTTV": {
                             "type": "String",
                             "length": 0
                         },
@@ -7086,7 +7086,7 @@
                             "type": "String",
                             "length": 0
                         },
-                        "WAYLENGTH": {
+                        "WAYLENGHT": {
                             "type": "Double"
                         },
                         "COMPL_NAME": {
