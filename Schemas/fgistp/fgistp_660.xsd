@@ -13,7 +13,10 @@
     - в составе справочника RS_STYPE код 3 (юридическая консультация, нотариальная контора) выведен из комментария; в официальной схеме код 3 помещен в комментарий, из-за чего при валидации он игнорируется, несмотря на то, что Приказ № 10 предусматривает использование данного кода для описания подтипа непроизводственного объекта по предоставлению населению правовых, финансовых, консультационных и иных подобных услуг;
     - из описания элемента PRPOSAD удален атрибут minOccurs="0", указывающий на необязательный характер соответствующего атрибута (согласно Приказу № 10 атрибут PRPOSAD в составе класса Road является обязательным);
     - из описания элемента WAYLENGHT удален атрибут minOccurs="0", указывающий на необязательный характер соответствующего атрибута (согласно Приказу № 10 атрибут WAYLENGHT в составе класса WaterWays является обязательным);
-    - из описания элемента GLOBALID в составе типов FunctionalZone_Type, MineralArea_type удален атрибут minOccurs="0", указывающий на необязательный характер соответствующего атрибута (согласно Приказу № 10 атрибут GLOBALID является обязательным для всех классов объектов).
+    - из описания элемента GLOBALID в составе типов FunctionalZone_Type, MineralArea_type удален атрибут minOccurs="0", указывающий на необязательный характер соответствующего атрибута (согласно Приказу № 10 атрибут GLOBALID является обязательным для всех классов объектов);
+    - в описании типа HeritageArea_Type у элемента STATUS исправлена ссылка на справочник (STATUS_Type заменено на STATUS_PR_Type);
+    в описании типа GreeneryPlanting_Type у элемента STATUS исправлена ссылка на справочник (STATUS_PR_Type заменено на STATUS_Type);
+    - у элементов, описывающих необязательные и условные целочисленные атрибуты, хранящие количественые характеристики объектов (число рабочих мест, вместимость и пр.), тип xs:positiveInteger заменен на xs:nonNegativeInteger.
 
     Файл модифицированной схемы размещен на сайте Terplan Symbology по ссылке https://sites.google.com/view/terplan-symbology/fgistp
 -->
@@ -345,7 +348,7 @@
                             <xs:documentation>Тип структурного подразделения</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="CAPACITY" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="CAPACITY" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Вместимость здания (комплекса зданий) образовательной организации, число мест для детей, учащихся, студентов</xs:documentation>
                         </xs:annotation>
@@ -355,7 +358,7 @@
                             <xs:documentation>Общая площадь здания, комплекса зданий, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -542,7 +545,7 @@
                             <xs:documentation>Площадь выставочных (экспозиционных) залов, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -674,7 +677,7 @@
                             <xs:documentation>Единовременная пропускная способность, чел.</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -861,7 +864,7 @@
                             <xs:documentation>Общая площадь здания, комплекса зданий, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1033,12 +1036,12 @@
                             <xs:documentation>Вместимость стационарных учреждений (отделений), мест</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PERSON_PH" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PERSON_PH" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Численность граждан, обслуживаемых на дому, чел.</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PERSON_PD" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PERSON_PD" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Мощность учреждений (отделений), число обслуживаемых лиц в сутки (без услуг стационара)</xs:documentation>
                         </xs:annotation>
@@ -1048,7 +1051,7 @@
                             <xs:documentation>Общая площадь здания, комплекса зданий, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1180,27 +1183,27 @@
                             <xs:documentation>Подтип места или объекта массового посещения в том числе тематического туризма</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="CAPACITY" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="CAPACITY" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Вместимость объектов, обеспечивающих временное проживание, мест</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PERSON_PD" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PERSON_PD" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Мощность объектов, не предусматривающих проживания, число обслуживаемых лиц в сутки</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="ONE_TIME" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="ONE_TIME" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Единовременная пропускная способность, чел.</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="BOAT_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="BOAT_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество стояночных мест лодочных станций и яхт-клубов, мест</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="SEAT_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="SEAT_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Вместимость объектов зрелищного назначения, зрительских мест</xs:documentation>
                         </xs:annotation>
@@ -1210,7 +1213,7 @@
                             <xs:documentation>Продолжительность работы</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1337,7 +1340,7 @@
                             <xs:documentation>Общая площадь здания, комплекса зданий, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1484,12 +1487,12 @@
                             <xs:documentation>Количество торговых мест рыночного комплекса, единиц</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="CAPACITY" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="CAPACITY" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество посадочных мест объекта общественного питания, единиц</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих (операционных) мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1606,7 +1609,7 @@
                             <xs:documentation>Площадь территории, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="CAPACITY" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="CAPACITY" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Среднесуточная посещаемость, чел.</xs:documentation>
                         </xs:annotation>
@@ -1616,7 +1619,7 @@
                             <xs:documentation>Продолжительность работы</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1708,7 +1711,7 @@
                             <xs:documentation>Основные производственные подразделения</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -1855,7 +1858,7 @@
                             <xs:documentation>Мощность объекта, тыс. голов</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -2017,7 +2020,7 @@
                             <xs:documentation>Общая площадь здания, комплекса зданий, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -2174,7 +2177,7 @@
                             <xs:documentation>Вид объекта утилизации, уничтожения биологических отходов</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -2447,7 +2450,7 @@
                             <xs:documentation>Тип иных объектов железнодорожного транспорта</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="CAPACITY" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="CAPACITY" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Вместимость железнодорожного вокзала, человек</xs:documentation>
                         </xs:annotation>
@@ -2537,17 +2540,17 @@
                             <xs:documentation>Номер документа-основания</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PROP_GR" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PROP_GR" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Пропускная способность (пар поездов в сутки)</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PRJ_POVS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PRJ_POVS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Провозная способность (млн тонн в год)</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PR_TEU" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PR_TEU" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Мощность (млн тонн в год, в том числе TEU в год)</xs:documentation>
                         </xs:annotation>
@@ -2699,12 +2702,12 @@
                             <xs:documentation>Протяженность сооружения, км</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="COLPLS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="COLPLS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество полос движения</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PRSPNS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PRSPNS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Пропускная способность (автомобилей в сутки)</xs:documentation>
                         </xs:annotation>
@@ -3257,12 +3260,12 @@
                             <xs:documentation>Тип автозаправочных станций</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="FUEL_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="FUEL_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество топливораздаточных колонок автозаправочных станций</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="POST_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="POST_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество постов станций технического обслуживания</xs:documentation>
                         </xs:annotation>
@@ -3282,7 +3285,7 @@
                             <xs:documentation>Тип стоянок автомобилей по длительности хранения</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PRKNG_FLS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PRKNG_FLS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Этажность стоянок</xs:documentation>
                         </xs:annotation>
@@ -3562,7 +3565,7 @@
                             <xs:documentation>Пропускная способность аэропорта, пассажиров в час</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PASS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PASS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Пассажиропоток (млн человек в год)</xs:documentation>
                         </xs:annotation>
@@ -3819,7 +3822,7 @@
                             <xs:documentation>Пассажирооборот (тыс. человек)</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="KLVPARC" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="KLVPARC" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество стояночных мест (ед.)</xs:documentation>
                         </xs:annotation>
@@ -4329,7 +4332,7 @@
                             <xs:documentation>Мощность трансформаторов, МВ · A</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="AMOUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="AMOUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество трансформаторов</xs:documentation>
                         </xs:annotation>
@@ -4551,12 +4554,12 @@
                             <xs:documentation>Протяженность сооружения, км</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PLINE_CNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PLINE_CNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество ниток</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр трубопровода, мм</xs:documentation>
                         </xs:annotation>
@@ -4626,7 +4629,7 @@
                             <xs:documentation>Номер документа-основания</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PR_PROS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PR_PROS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Проектная пропускная способность (куб. метров в год)</xs:documentation>
                         </xs:annotation>
@@ -4809,12 +4812,12 @@
                             <xs:documentation>Протяженность сооружения, км</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PLINE_CNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PLINE_CNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество ниток</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр трубопровода, мм</xs:documentation>
                         </xs:annotation>
@@ -4889,7 +4892,7 @@
                             <xs:documentation>Номер документа-основания</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PR_PROS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PR_PROS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Проектная пропускная способность (куб. метров в год)</xs:documentation>
                         </xs:annotation>
@@ -4965,7 +4968,7 @@
                             <xs:documentation>Размер санитарно-защитной зоны, м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="ZONE_SIZE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="ZONE_SIZE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Размер охранной зоны, м</xs:documentation>
                         </xs:annotation>
@@ -5072,12 +5075,12 @@
                             <xs:documentation>Протяженность сооружения, км</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PLINE_CNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PLINE_CNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество труб</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр трубопровода, мм</xs:documentation>
                         </xs:annotation>
@@ -5142,7 +5145,7 @@
                             <xs:documentation>Номер документа-основания</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PR_PROS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PR_PROS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Проектная пропускная способность (куб. метров в год)</xs:documentation>
                         </xs:annotation>
@@ -5325,22 +5328,22 @@
                             <xs:documentation>Процент износа, %</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D1_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D1_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр подающего трубопровода, мм</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D2_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D2_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр обратного трубопровода, мм</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D3_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D3_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр подающего трубопровода горячего водоснабжения, мм</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D4_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D4_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр циркуляционного трубопровода горячего водоснабжения, мм</xs:documentation>
                         </xs:annotation>
@@ -5543,12 +5546,12 @@
                             <xs:documentation>Протяженность сооружения, км</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PLINE_CNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PLINE_CNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество труб</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр трубопровода, мм</xs:documentation>
                         </xs:annotation>
@@ -5746,12 +5749,12 @@
                             <xs:documentation>Протяженность сооружения, км</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PLINE_CNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="PLINE_CNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество труб</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="D_PLINE" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="D_PLINE" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Диаметр трубопровода, мм</xs:documentation>
                         </xs:annotation>
@@ -5832,7 +5835,7 @@
                             <xs:documentation>Местоположение, адресное описание</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="CAPACITY" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="CAPACITY" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Емкость, абонентов</xs:documentation>
                         </xs:annotation>
@@ -5897,7 +5900,7 @@
                             <xs:documentation>Кадастровый номер земельного участка и (или) номер кадастрового квартала, в границах которого расположен объект</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="OB_HR" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="OB_HR" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Объем хранения (ТБ)</xs:documentation>
                         </xs:annotation>
@@ -6321,7 +6324,7 @@
                             <xs:documentation>Классификация зданий пожарных депо</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="FE_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="FE_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество автомобилей</xs:documentation>
                         </xs:annotation>
@@ -6739,7 +6742,7 @@
                             <xs:documentation>Реквизиты нормативного акта, устанавливающего тип объекта</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Количество рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -8134,7 +8137,7 @@
                             <xs:documentation>Примечание</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="STATUS" type="fgistp:STATUS_Type" minOccurs="0">
+                    <xs:element name="STATUS" type="fgistp:STATUS_PR_Type" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Статус объекта (границы)</xs:documentation>
                         </xs:annotation>
@@ -8468,7 +8471,7 @@
                             <xs:documentation>Общая площадь здания, комплекса зданий, кв. м</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="WRK_COUNT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="WRK_COUNT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Оценка количества рабочих мест, единиц</xs:documentation>
                         </xs:annotation>
@@ -8742,7 +8745,7 @@
                             <xs:documentation>Коэффициент застройки, %</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="BLD_HEIGHT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="BLD_HEIGHT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Этажность застройки</xs:documentation>
                         </xs:annotation>
@@ -8752,12 +8755,12 @@
                             <xs:documentation>Плотность населения, чел/га</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="POPULATION" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="POPULATION" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Численность населения, чел.</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="HZRD_CLASS" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="HZRD_CLASS" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Класс опасности объекта в соответствии с санитарной классификацией</xs:documentation>
                         </xs:annotation>
@@ -9027,7 +9030,7 @@
                             <xs:documentation>Общая площадь территории зоны (кластера), га</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="LIVE_TIME" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="LIVE_TIME" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Срок функционирования зоны</xs:documentation>
                         </xs:annotation>
@@ -9219,7 +9222,7 @@
                             <xs:documentation>Примечание</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="STATUS" type="fgistp:STATUS_PR_Type">
+                    <xs:element name="STATUS" type="fgistp:STATUS_Type">
                         <xs:annotation>
                             <xs:documentation>Статус объекта</xs:documentation>
                         </xs:annotation>
@@ -9541,7 +9544,7 @@
                             <xs:documentation>Коэффициент застройки, %</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="BLD_HEIGHT" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="BLD_HEIGHT" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Этажность застройки</xs:documentation>
                         </xs:annotation>
@@ -9551,7 +9554,7 @@
                             <xs:documentation>Плотность населения, чел/га</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="POPULATION" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="POPULATION" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Численность населения, чел.</xs:documentation>
                         </xs:annotation>
@@ -9571,7 +9574,7 @@
                             <xs:documentation>Уровень управления в Российской Федерации для объектов, размещаемых в границах функциональной зоны</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NUMBER" type="xs:positiveInteger" minOccurs="0">
+                    <xs:element name="NUMBER" type="xs:nonNegativeInteger" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>Номер территориальной зоны</xs:documentation>
                         </xs:annotation>
