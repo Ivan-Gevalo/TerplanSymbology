@@ -1,107 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ogr:FeatureCollection xmlns:ogr="https://fgistp.economy.gov.ru/" xmlns="https://fgistp.economy.gov.ru/">
-  <ogr:featureMember>
+<FeatureCollection xmlns="https://fgistp.economy.gov.ru/">
+  <featureMember>
     <Culture>
       <GLOBALID>6875f1f0-17ef-4db5-ab21-003fbf269691</GLOBALID>
       <CLASSID>602010201</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </Culture>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <Sport>
       <GLOBALID>2638acaa-76b8-4da9-adeb-a1e0b694e24f</GLOBALID>
       <CLASSID>602010301</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </Sport>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <Health>
       <GLOBALID>93b2fb90-13fe-4739-ac56-8ad01816c21b</GLOBALID>
       <CLASSID>602010401</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </Health>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <WasteFacility>
       <GLOBALID>65519b26-6f17-4011-9409-af4180dc4768</GLOBALID>
       <CLASSID>602020401</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </WasteFacility>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <Road>
       <GLOBALID>bd03743a-8661-4992-a117-add0cd9db676</GLOBALID>
       <CLASSID>602030303</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </Road>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <PublicTransportObj>
       <GLOBALID>7cc73f64-af84-4d01-9434-7ac038932679</GLOBALID>
       <CLASSID>602030701</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </PublicTransportObj>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <ElectricPowerStation>
       <GLOBALID>881149ed-4211-4724-b9e7-fa7843923cb3</GLOBALID>
       <CLASSID>602040101</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </ElectricPowerStation>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <EmergencyProtectionObj>
       <GLOBALID>2e1ef289-cbea-4e4f-bb35-7a6949ba0788</GLOBALID>
       <CLASSID>602050201</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </EmergencyProtectionObj>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <GasFacility>
       <GLOBALID>86f7483c-2256-40b6-a188-1127c8c88169</GLOBALID>
       <CLASSID>602040501</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </GasFacility>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <ThermalFacility>
       <GLOBALID>ba8ed48e-9cea-4e0b-856e-c40404560d23</GLOBALID>
       <CLASSID>602040901</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </ThermalFacility>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <Recreation>
       <GLOBALID>aad11776-3ceb-4034-9fef-8be571329231</GLOBALID>
       <CLASSID>602010601</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </Recreation>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <TelecomFacility>
       <GLOBALID>85b87d18-8df3-4edd-9465-f03228640139</GLOBALID>
       <CLASSID>602041511</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </TelecomFacility>
-  </ogr:featureMember>
-  <ogr:featureMember>
+  </featureMember>
+  <featureMember>
     <OtherObject>
       <GLOBALID>ae0494a1-d810-46f5-93c7-c868664e6020</GLOBALID>
       <CLASSID>602050601</CLASSID>
       <OKTMO>12345678</OKTMO>
       <ZNP_TYPE>1</ZNP_TYPE>
     </OtherObject>
-  </ogr:featureMember>
-</ogr:FeatureCollection>
+  </featureMember>
+</FeatureCollection>
